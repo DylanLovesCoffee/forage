@@ -14,6 +14,7 @@ import {
 import axios from 'axios';
 import Recipe from './components/recipeList/Recipe'
 import List from './components/recipeList/List'
+import { StackNavigator } from 'react-navigation';
 
 export default class SeeFood extends Component {
 
