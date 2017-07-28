@@ -12,15 +12,15 @@ import {
   View
 } from 'react-native';
 import axios from 'axios';
-import Recipe from './components/Recipe'
-import List from './components/List'
+import Recipe from './components/recipeList/Recipe'
+import List from './components/recipeList/List'
 
 export default class SeeFood extends Component {
 
   constructor() {
     super();
     this.state = {
-      data : [{title: 'boom pie'}, {title: 'boom pizza'}]
+      data : []
     }
   }
 
