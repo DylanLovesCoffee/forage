@@ -17,7 +17,6 @@ import List from './components/recipeList/List'
 import { StackNavigator } from 'react-navigation';
 
 export default class SeeFood extends Component {
-
   constructor() {
     super();
     this.state = {
@@ -34,7 +33,6 @@ export default class SeeFood extends Component {
   }
 
   render() {
-
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>List of recipes</Text>
