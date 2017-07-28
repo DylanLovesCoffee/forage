@@ -11,21 +11,33 @@ import {
   Text,
   View
 } from 'react-native';
+import axios from 'axios';
+import Recipe from './components/Recipe'
+import List from './components/List'
 
 export default class SeeFood extends Component {
+
+  constructor() {
+    super();
+    this.state = {
+      data : [{title: 'boom pie'}, {title: 'boom pizza'}]
+    }
+  }
+
+  componentDidMount() {
+    axios.get('http://127.0.0.1:3000/recipes')
+      .then((response) => {
+        console.log(response);
+        this.setState({ data : response.data })
+      })
+  }
+
   render() {
+
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
+        <Text style={styles.welcome}>List of recipes</Text>
+        <List recipes={this.state.data}/>
       </View>
     );
   }
