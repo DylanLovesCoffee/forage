@@ -16,27 +16,6 @@ export default class UserProfile extends Component {
     };
   }
 
-  componentDidMount() {
-   axios.get('http://localhost:3000/recipes')
-     .then((response) => {
-       this.setState({})
-     })
-
-    //    (response) => response.json())
-    //  .then((responseJson) => {
-    //    let ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-    //    this.setState({
-    //      isLoading: false,
-    //      dataSource: ds.cloneWithRows(responseJson.movies),
-    //    }, function() {
-    //      // do something with new state
-    //    });
-    //  })
-    //  .catch((error) => {
-    //    console.error(error);
-    //  });
- }
-
   render() {
     return (
       <View>
