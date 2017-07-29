@@ -22,6 +22,12 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>NSCameraUsageDescription</key>
+	<string>SeeFood would like to access your camera</string>
+
+	<!-- Include this only if you are planning to use the camera roll -->
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>SeeFood would like to access your photo library</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
