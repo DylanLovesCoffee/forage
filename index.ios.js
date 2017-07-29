@@ -9,14 +9,13 @@ import {
   TouchableHighlight,
 } from 'react-native';
 import axios from 'axios';
-import Recipe from './components/recipeList/Recipe'
-import List from './components/recipeList/List'
-import Login from './components/login/Login'
-import Registration from './components/register/Registration'
+import Recipe from './components/recipeList/Recipe';
+import List from './components/recipeList/List';
+import Login from './components/login/Login';
+import Registration from './components/register/Registration';
 import Camera from 'react-native-camera';
 
 export default class SeeFood extends Component {
-
   constructor() {
     super();
     this.state = {
@@ -42,16 +41,18 @@ export default class SeeFood extends Component {
         <List recipes={this.state.data}/>
         <Login />
         <Registration />
-        <Camera
-          ref={(cam) => {
-            this.camera = cam;
-          }}
-          style={styles.preview}
-          aspect={Camera.constants.Aspect.fill}>
-          <TouchableHighlight onPress={this.clickedme.bind(this)}>
-              <View></View>
-          </TouchableHighlight>
-        </Camera>
+        <View>
+          <Camera
+            ref={(cam) => {
+              this.camera = cam;
+            }}
+            style={styles.preview}
+            aspect={Camera.constants.Aspect.fill}>
+            <TouchableHighlight onPress={this.clickedme.bind(this)}>
+                <View style={{height:50, width:50, backgroundColor:"red"}}></View>
+            </TouchableHighlight>
+          </Camera>
+        </View>
       </View>
     );
   }
