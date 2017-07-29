@@ -10,6 +10,7 @@ import axios from 'axios';
 import Recipe from './components/recipeList/Recipe'
 import List from './components/recipeList/List'
 import Login from './components/login/Login'
+import Registration from './components/register/Registration'
 
 export default class SeeFood extends Component {
 
@@ -35,6 +36,7 @@ export default class SeeFood extends Component {
         <Text style={styles.welcome}>List of recipes</Text>
         <List recipes={this.state.data}/>
         <Login />
+        <Registration />
       </View>
     );
   }
