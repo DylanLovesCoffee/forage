@@ -25,7 +25,9 @@ export default class SeeFood extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://127.0.0.1:3000/recipes')
+    var str = "butter,crust,flour,eggs.sugar"
+    var url = "http://127.0.0.1:3000/results?food="
+    axios.get(url+str)
       .then((response) => {
         console.log(response);
         this.setState({ data : response.data })
