@@ -17,6 +17,6 @@ export default class List extends Component {
           return <Recipe title={recipe.title} key={i} />
         })}
       </View>
-          )
+    )
   }
 }
