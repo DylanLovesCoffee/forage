@@ -20,11 +20,3 @@ export default class Registration extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    padding: 10
-
-  }
-  
-});

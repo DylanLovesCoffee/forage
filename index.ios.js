@@ -9,8 +9,8 @@ import {
 import axios from 'axios';
 import Recipe from './components/recipeList/Recipe'
 import List from './components/recipeList/List'
-import Login from './components/login/Login'
-import Registration from './components/register/Registration'
+import Login from './components/account/Login'
+import Registration from './components/account/Registration'
 
 export default class SeeFood extends Component {
 
@@ -36,7 +36,6 @@ export default class SeeFood extends Component {
         <Text style={styles.welcome}>List of recipes</Text>
         <List recipes={this.state.data}/>
         <Login />
-        <Registration />
       </View>
     );
   }
@@ -45,8 +44,7 @@ export default class SeeFood extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    backgroundColor: '#E0E0E0'
+    justifyContent: 'center'
   }
   
 });
