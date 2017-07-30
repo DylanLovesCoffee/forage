@@ -32,11 +32,11 @@ export default class SeeFood extends Component {
   render() {
     return (
       <View style={styles.container}>
-        {/* <Text style={styles.welcome}>List of recipes</Text>
+        <Text style={styles.welcome}>List of recipes</Text>
         <List recipes={this.state.data}/>
         <Login />
-        <Registration /> */}
-        <NavBar />
+        <Registration />
+        {/* <NavBar /> */}
       </View>
     );
   }

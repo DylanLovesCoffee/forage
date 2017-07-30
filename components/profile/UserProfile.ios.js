@@ -3,16 +3,18 @@ import {
   StyleSheet,
   Text,
   View,
-  Button
+  Button,
+  ListView
 } from 'react-native';
 import AppCamera from '../camera/AppCamera';
 
 export default class UserProfile extends Component {
   constructor() {
     super();
+    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
-      userFirstName: "User's First Name - DYNAMIC",
-      recipeList: undefined
+      userFirstName: "Dylan",
+      recipeList: ds.cloneWithRows(['Recipe1', 'Recipe2', 'Recipe3']),
     };
   }
 
@@ -27,8 +29,13 @@ export default class UserProfile extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Hello, {this.state.userFirstName}</Text>
-        <Text>List Recipes Here: {this.state.recipeList}</Text>
+        <View>
+          <Text>Hello, {this.state.userFirstName}</Text>
+          <ListView
+          dataSource={this.state.recipeList}
+          renderRow={(rowData) => <Text>{rowData}</Text>}
+          />
+      </View>
         <View style={styles.container}>
           <Button
             title="Open Camera"
