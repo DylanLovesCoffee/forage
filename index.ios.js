@@ -58,7 +58,12 @@ export default class RecipeList extends Component {
 
 const SeeFood = StackNavigator({
   Home: { screen: RecipeList },
-  Recipe: { screen: RecipeScreen }
+  Recipe: {
+    screen: RecipeScreen,
+    navigationOptions: ({navigation}) => ({
+      title: `${navigation.state.params.title}`,
+    }),
+   }
 })
 
 const styles = StyleSheet.create({

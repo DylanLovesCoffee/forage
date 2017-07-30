@@ -14,7 +14,7 @@ export default class Recipe extends Component {
     let {title, navigate} = this.props
     return(
       <Button
-        onPress={() => navigate('Recipe')}
+        onPress={() => navigate('Recipe', { title: title })}
         title={title}
       />
     )
