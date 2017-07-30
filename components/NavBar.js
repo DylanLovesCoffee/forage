@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {
-  AppRegistry,
   StyleSheet,
   Text,
   View,
@@ -11,7 +10,6 @@ import { StackNavigator } from 'react-navigation';
 // import { Icon } from 'react-native-elements';
 
 export default class NavBar extends Component {
-
   render() {
     return(
       <View style={styles.container}>

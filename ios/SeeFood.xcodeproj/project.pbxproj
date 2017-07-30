@@ -48,6 +48,7 @@
 		E0FA8CD0BE6542A18CBD50F3 /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA060DC243A44FB0B760C21D /* MaterialCommunityIcons.ttf */; };
 		E3A1B8EBA1904C678B4FFF58 /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 72500F200B3E40419D804FAF /* Foundation.ttf */; };
 		FC8D2A7F1F2D3F6A00227519 /* libRCTCamera.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FC8D2A7E1F2D3EE400227519 /* libRCTCamera.a */; };
+		FC8D2AC01F2D94E600227519 /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = FC8D2ABF1F2D94E500227519 /* Fonts */; };
 		FF5C4D73D73D41D88D290096 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 94705FF7B18A4B6B953B6983 /* Ionicons.ttf */; };
 /* End PBXBuildFile section */
 
@@ -332,6 +333,7 @@
 		F37ADEE54F664358AD418970 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 		F64034C00F4444BE89C548AF /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		FC8D2A791F2D3EE300227519 /* RCTCamera.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTCamera.xcodeproj; path = "../node_modules/react-native-camera/ios/RCTCamera.xcodeproj"; sourceTree = "<group>"; };
+		FC8D2ABF1F2D94E500227519 /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Fonts; path = "../node_modules/react-native-vector-icons/Fonts"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -549,6 +551,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				FC8D2ABF1F2D94E500227519 /* Fonts */,
 				FC8D2A791F2D3EE300227519 /* RCTCamera.xcodeproj */,
 				13B07FAE1A68108700A75B9A /* SeeFood */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
@@ -1037,6 +1040,7 @@
 				010714605EEB463B85F6CA2D /* Entypo.ttf in Resources */,
 				C351C0660F11443A8A584BE1 /* EvilIcons.ttf in Resources */,
 				98538F6CE4F04ED69C16FABC /* FontAwesome.ttf in Resources */,
+				FC8D2AC01F2D94E600227519 /* Fonts in Resources */,
 				E3A1B8EBA1904C678B4FFF58 /* Foundation.ttf in Resources */,
 				FF5C4D73D73D41D88D290096 /* Ionicons.ttf in Resources */,
 				E0FA8CD0BE6542A18CBD50F3 /* MaterialCommunityIcons.ttf in Resources */,

@@ -1,15 +1,20 @@
 import React, { Component } from 'react';
 import {
-  AppRegistry,
   StyleSheet,
   Text,
   View,
   Button
 } from 'react-native';
 import AppCamera from '../camera/AppCamera';
-import { Icon } from 'react-native-elements';
 
 export default class UserProfile extends Component {
+  constructor() {
+    super();
+    this.state = {
+      userFirstName: "User's First Name - DYNAMIC",
+      recipeList: undefined
+    };
+  }
 
   static navigationOptions = {
     title: "Profile"
@@ -17,14 +22,6 @@ export default class UserProfile extends Component {
 
   _onPress = () => {
     this.props.navigation.navigate("Cam");
-  }
-
-  constructor() {
-    super();
-    this.state = {
-      userFirstName: "User's First Name - DYNAMIC",
-      recipeList: undefined
-    };
   }
 
   render() {
@@ -41,13 +38,6 @@ export default class UserProfile extends Component {
     );
   }
 }
-
-// const NavConfig = {
-//   Cam: { screen : OpenCamera },
-//   AppCam: { screen : AppCamera },
-// };
-//
-// const NavTab = StackNavigator(NavConfig)
 
 const styles = StyleSheet.create({
   container: {
