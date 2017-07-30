@@ -6,12 +6,15 @@ import {
   View,
   Button
 } from 'react-native';
+import { StackNavigator } from 'react-navigation';
 
 export default class Recipe extends Component {
   render() {
-    let {title} = this.props
+
+    let {title, navigate} = this.props
     return(
       <Button
+        onPress={() => navigate('Recipe')}
         title={title}
       />
     )

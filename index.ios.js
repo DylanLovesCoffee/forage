@@ -45,18 +45,32 @@ export default class RecipeList extends Component {
   }
 
   render() {
-
+    const { navigate } = this.props.navigation
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>List of recipes</Text>
-        <List recipes={this.state.data}/>
+        <List recipes={this.state.data} navigate={navigate}/>
       </View>
     );
   }
 }
 
+// boom
+class RecipeScreen extends Component {
+  static navigationOptions = {
+    title: 'recipe test screen'
+  }
+  render() {
+    return(
+      <Text>this is the test screen for an individual recipe</Text>
+    )
+  }
+}
+// bam
+
 const SeeFood = StackNavigator({
   Home: { screen: RecipeList },
+  Recipe: { screen: RecipeScreen }
 })
 
 const styles = StyleSheet.create({
