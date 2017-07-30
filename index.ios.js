@@ -11,18 +11,28 @@ import {
   Text,
   View
 } from 'react-native';
+import { StackNavigator } from 'react-navigation';
 import axios from 'axios';
 import Recipe from './components/recipeList/Recipe'
 import List from './components/recipeList/List'
 
-export default class SeeFood extends Component {
+export default class RecipeList extends Component {
 
   constructor() {
     super();
     this.state = {
-      data : []
+      data : [
+        {title: 'Boom pizza'},
+        {title: 'Malai Kofta'},
+        {title: 'Lame Salad'}
+      ]
     }
   }
+
+  static navigationOptions = {
+    title: 'Recipes',
+  }
+
 
   componentDidMount() {
     var str = "butter,crust,flour,eggs.sugar"
@@ -44,6 +54,10 @@ export default class SeeFood extends Component {
     );
   }
 }
+
+const SeeFood = StackNavigator({
+  Home: { screen: RecipeList },
+})
 
 const styles = StyleSheet.create({
   container: {
