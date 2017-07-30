@@ -13,7 +13,7 @@ import Camera from 'react-native-camera';
 
 export default class AppCamera extends Component {
 
-  clickedme(){
+  clickedme = () => {
     alert("was touched");
   }
 

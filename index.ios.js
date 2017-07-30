@@ -11,6 +11,8 @@ import Recipe from './components/recipeList/Recipe';
 import List from './components/recipeList/List';
 import Login from './components/login/Login';
 import Registration from './components/register/Registration';
+import { StackNavigator } from 'react-navigation';
+import { Icon } from 'react-native-elements';
 
 export default class SeeFood extends Component {
   constructor() {
@@ -31,6 +33,9 @@ export default class SeeFood extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <View style={{padding:10, flex:1}}>
+          <NavTab />
+        </View>
         <Text style={styles.welcome}>List of recipes</Text>
         <List recipes={this.state.data}/>
         <Login />
@@ -39,6 +44,16 @@ export default class SeeFood extends Component {
     );
   }
 }
+
+const HomeScreen = () => <Text>Home</Text>;
+const CameraScreen = () => <Text>Camera</Text>;
+
+const NavConfig = {
+  Home: { screen : HomeScreen, navigationOptions: { title: "Home" } },
+  Camera: { screen : CameraScreen },
+};
+
+const NavTab = StackNavigator(NavConfig)
 
 const styles = StyleSheet.create({
   container: {
