@@ -13,6 +13,10 @@ import Camera from 'react-native-camera';
 
 export default class AppCamera extends Component {
 
+  static navigationOptions = {
+    title: "Scan Your Groceries"
+  };
+
   clickedme = () => {
     alert("was touched");
   }
