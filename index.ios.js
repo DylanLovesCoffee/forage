@@ -15,6 +15,7 @@ import { StackNavigator } from 'react-navigation';
 import axios from 'axios';
 import Recipe from './components/recipeList/Recipe'
 import List from './components/recipeList/List'
+import RecipeScreen from './components/recipeList/RecipeScreen'
 
 export default class RecipeList extends Component {
 
@@ -54,19 +55,6 @@ export default class RecipeList extends Component {
     );
   }
 }
-
-// boom
-class RecipeScreen extends Component {
-  static navigationOptions = {
-    title: 'recipe test screen'
-  }
-  render() {
-    return(
-      <Text>this is the test screen for an individual recipe</Text>
-    )
-  }
-}
-// bam
 
 const SeeFood = StackNavigator({
   Home: { screen: RecipeList },
