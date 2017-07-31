@@ -6,23 +6,37 @@ import {
   View, 
   Image
 } from 'react-native';
+import { StackNavigator } from 'react-navigation';
 import axios from 'axios';
 import Recipe from './components/recipeList/Recipe'
 import List from './components/recipeList/List'
+import RecipeScreen from './components/recipeList/RecipeScreen'
 import Login from './components/login/Login'
 import Registration from './components/register/Registration'
 
-export default class SeeFood extends Component {
+
+export default class RecipeList extends Component {
 
   constructor() {
     super();
     this.state = {
-      data : []
+      data : [
+        {title: 'Boom pizza'},
+        {title: 'Malai Kofta'},
+        {title: 'Lame Salad'}
+      ]
     }
   }
 
+  static navigationOptions = {
+    title: 'Recipes',
+  }
+
+
   componentDidMount() {
-    axios.get('http://127.0.0.1:3000/recipes')
+    var str = "butter,crust,flour,eggs.sugar"
+    var url = "http://127.0.0.1:3000/results?food="
+    axios.get(url+str)
       .then((response) => {
         console.log(response);
         this.setState({ data : response.data })
@@ -30,17 +44,27 @@ export default class SeeFood extends Component {
   }
 
   render() {
-
+    const { navigate } = this.props.navigation
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>List of recipes</Text>
-        <List recipes={this.state.data}/>
+        <List recipes={this.state.data} navigate={navigate}/>
         <Login />
         <Registration />
       </View>
     );
   }
 }
+
+const SeeFood = StackNavigator({
+  Home: { screen: RecipeList },
+  Recipe: {
+    screen: RecipeScreen,
+    navigationOptions: ({navigation}) => ({
+      title: `${navigation.state.params.title}`,
+    }),
+   }
+})
 
 const styles = StyleSheet.create({
   container: {
