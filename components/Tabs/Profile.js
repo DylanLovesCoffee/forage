@@ -10,10 +10,6 @@ import { StackNavigator } from 'react-navigation';
 
 export default class Profile extends Component {
 
-  constructor() {
-    
-  }
-
   render() {
     return(
       <View style={styles.container}>
