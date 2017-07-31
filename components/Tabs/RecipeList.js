@@ -41,9 +41,6 @@ export default class RecipeList extends Component {
     return (
       <View style={styles.container}>
         <List recipes={this.state.data} navigate={navigate}/>
-        {/* <Login /> */}
-        {/* <Registration /> */}
-        {/* <NavBar /> */}
       </View>
     );
   }
