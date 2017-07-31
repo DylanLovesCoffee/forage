@@ -13,6 +13,7 @@ import List from './components/recipeList/List'
 import RecipeScreen from './components/recipeList/RecipeScreen'
 import Login from './components/login/Login'
 import Registration from './components/register/Registration'
+import NavBar from './components/NavBar';
 
 
 export default class RecipeList extends Component {
@@ -50,6 +51,7 @@ export default class RecipeList extends Component {
         <List recipes={this.state.data} navigate={navigate}/>
         <Login />
         <Registration />
+        {/* <NavBar /> */}
       </View>
     );
   }
