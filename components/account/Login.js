@@ -16,7 +16,7 @@ export default class Login extends Component {
   render() {
 
     return (
-      <KeyboardAvoidingView behavior="padding" style={styles.formContainer}>
+      <KeyboardAvoidingView behavior="padding" >
 
         <View>
           <LoginForm />
@@ -25,11 +25,3 @@ export default class Login extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    padding: 10
-
-  }
-  
-});

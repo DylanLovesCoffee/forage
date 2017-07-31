@@ -11,9 +11,10 @@ import axios from 'axios';
 import Recipe from './components/recipeList/Recipe'
 import List from './components/recipeList/List'
 import RecipeScreen from './components/recipeList/RecipeScreen'
-import Login from './components/login/Login'
-import Registration from './components/register/Registration'
+import Login from './components/account/Login'
+import Registration from './components/account/Registration'
 import NavBar from './components/NavBar';
+
 
 
 export default class RecipeList extends Component {
@@ -73,7 +74,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#E0E0E0'
   },
-
 });
 
 AppRegistry.registerComponent('SeeFood', () => SeeFood);
