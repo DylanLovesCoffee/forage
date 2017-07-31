@@ -3,8 +3,8 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View, 
-  Image
+  View,
+  Image,
 } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import axios from 'axios';
@@ -70,8 +70,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     backgroundColor: '#E0E0E0'
-  }
-  
+  },
+
 });
 
 AppRegistry.registerComponent('SeeFood', () => SeeFood);
