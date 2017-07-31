@@ -8,8 +8,35 @@ import {
   TouchableOpacity,
   StatusBar
 } from 'react-native';
+import {firebaseRef} from '../services/Firebase'
+import Actions from 'react-native-router-flux'
+import _ from 'lodash'
 
 export default class RegistrationForm extends Component {
+
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      email: '',
+      password: ''
+    }
+
+    this._register = this._register.bind(this)
+  }
+
+  _register() {
+
+    firebaseRef.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).catch(function(error) {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+
+      console.log(errorCode)
+      console.log(errorMessage)
+    });
+    
+  }
+
   render() {
 
     return (
@@ -20,39 +47,35 @@ export default class RegistrationForm extends Component {
         />
         <View style={styles.form}>
 
-          <TextInput 
-            placeholder="username"
-            placeholderTextColor="black"
-            returnKeyType="next"
-            onSubmitEditing={() => this.emailInput.focus()}
+          <TextInput
             autoCorrect={false}
-            style={styles.input}
-          />
-
-          <TextInput 
+            autoCapitalize='none'
             placeholder="email"
             placeholderTextColor="black"
             ref={(input) => this.emailInput = input}
             returnKeyType="next"
             onSubmitEditing={() => this.passwordInput.focus()}
+            onChangeText = {(text) => this.setState({email: text})}
             keyboardType="email-address"
-            autoCorrect={false}
             style={styles.input}
           />
 
-          <TextInput 
+          <TextInput
+            autoCorrect={false}
+            autoCapitalize='none' 
             placeholder="password"
             placeholderTextColor="black"
             returnKeyType="join"
             secureTextEntry
             style={styles.input}
+            onChangeText = {(text) => this.setState({password: text})}
             ref={(input) => this.passwordInput = input}
           />
 
         </View>
 
         <View style={styles.registration}>
-          <TouchableOpacity style={styles.registerButtonContainer}>
+          <TouchableOpacity style={styles.registerButtonContainer} onPress={this._register}>
             <Text style={styles.registerButtonText}>create account</Text>
           </TouchableOpacity>
         </View>
@@ -67,8 +90,7 @@ const styles = StyleSheet.create({
     padding: 20
   },
   form: {
-    marginTop: 300,
-    marginBottom: 15
+    marginTop: 210
   },
   input: {
     height: 40,

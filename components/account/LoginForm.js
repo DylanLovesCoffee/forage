@@ -9,6 +9,10 @@ import {
   StatusBar
 } from 'react-native';
 
+import {firebaseRef} from '../services/Firebase'
+import Actions from 'react-native-router-flux'
+import _ from 'lodash'
+
 export default class LoginForm extends Component {
 
   constructor(props) {
@@ -18,6 +22,21 @@ export default class LoginForm extends Component {
       email: '',
       password: ''
     }
+
+    this._login = this._login.bind(this)
+    this._register = this._register.bind(this)
+  }
+
+  _login() {
+    firebaseRef.auth().signInWithEmailAndPassword(this.state.email, this.state.password).catch(function(error) {
+      console.log(error.code)
+      console.log(error.message)
+
+    })
+  }
+
+  _register() {
+    Actions.RegistrationForm()
   }
 
   render() {
@@ -29,8 +48,10 @@ export default class LoginForm extends Component {
           barStyle="light-content"
         />
         <View style={styles.form}>
-          <TextInput 
-            placeholder="username"
+          <TextInput
+            autoCorrect={false}
+            autoCapitalize='none'
+            placeholder="email"
             placeholderTextColor="black"
             returnKeyType="next"
             onChangeText = {(text) => this.setState({email: text})}
@@ -42,6 +63,8 @@ export default class LoginForm extends Component {
           />
 
           <TextInput 
+            autoCorrect={false}
+            autoCapitalize='none'
             placeholder="password"
             placeholderTextColor="black"
             onChangeText = {(text) => this.setState({password: text})}
@@ -54,13 +77,13 @@ export default class LoginForm extends Component {
         </View>
 
         <View style={styles.login}>
-          <TouchableOpacity style={styles.loginButtonContainer}>
+          <TouchableOpacity style={styles.loginButtonContainer} onPress={this._login}>
             <Text style={styles.loginButtonText}>LOGIN</Text>
           </TouchableOpacity>
         </View>
 
         <View style={styles.registration}>
-          <TouchableOpacity style={styles.registerButtonContainer}>
+          <TouchableOpacity style={styles.registerButtonContainer} onPress={this._register}>
             <Text style={styles.registerButtonText}>create account</Text>
           </TouchableOpacity>
         </View>
@@ -76,8 +99,7 @@ const styles = StyleSheet.create({
     padding: 20
   },
   form: {
-    marginTop: 300,
-    marginBottom: 15
+    marginTop: 255,
   },
   input: {
     height: 40,
