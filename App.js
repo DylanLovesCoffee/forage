@@ -14,7 +14,7 @@ import RecipeScreen from './components/recipeList/RecipeScreen'
 import Login from './components/account/Login'
 import Registration from './components/account/Registration'
 import NavBar from './components/NavBar';
-
+import Clarifai from './components/Clarifai';
 
 
 export default class RecipeList extends Component {
@@ -48,11 +48,12 @@ export default class RecipeList extends Component {
     const { navigate } = this.props.navigation
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>List of recipes</Text>
+        {/* <Text style={styles.welcome}>List of recipes</Text>
         <List recipes={this.state.data} navigate={navigate}/>
         <Login />
-        <Registration />
+        <Registration /> */}
         {/* <NavBar /> */}
+        <Clarifai />
       </View>
     );
   }
