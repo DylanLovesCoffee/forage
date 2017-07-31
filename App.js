@@ -18,7 +18,6 @@ import RecipeList from './components/Screens/RecipeList';
 import AppCamera from './components/camera/AppCamera';
 import UserProfile from './components/profile/UserProfile'
 
-
 const Recipes = StackNavigator({
   Home: { screen: RecipeList },
   Recipe: {
