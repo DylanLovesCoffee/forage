@@ -14,8 +14,8 @@ import List from './components/recipeList/List'
 import RecipeScreen from './components/recipeList/RecipeScreen'
 import Login from './components/account/Login'
 import Registration from './components/account/Registration'
-import Profile from './components/Tabs/Profile';
-import RecipeList from './components/Tabs/RecipeList';
+import Profile from './components/Screens/Profile';
+import RecipeList from './components/Screens/RecipeList';
 
 
 const Recipes = StackNavigator({
