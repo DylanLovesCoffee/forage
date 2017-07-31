@@ -29,18 +29,11 @@ export default class UserProfile extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <View>
-          <Text>Hello, {this.state.userFirstName}</Text>
-          <ListView
-          dataSource={this.state.recipeList}
-          renderRow={(rowData) => <Text>{rowData}</Text>}
-          />
-      </View>
-        <View style={styles.container}>
-          <Button
-            title="Open Camera"
-            onPress={this._onPress} />
-        </View>
+        <Text>Hello, {this.state.userFirstName}</Text>
+        <ListView
+        dataSource={this.state.recipeList}
+        renderRow={(rowData) => <Text>{rowData}</Text>}
+        />
       </View>
     );
   }
