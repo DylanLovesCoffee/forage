@@ -9,20 +9,30 @@ import {
 
 export default class Clarifai extends Component {
 
-  callClarifai() {
+  callClarifai(image) {
+    let imgUrl = image
+
     fetch("https://api.clarifai.com/v2/models/bd367be194cf45149e75f01d59f77ba7/outputs", {
       method: "POST",
       headers: {
-        "Authorization": "Key ed7a86a0f382417bb16c3bb3917407e5",
-        "Content-Type": "application/json"
+        "Authorization": "Key " + ENV[AUTH_KEY],
+        "Content-Type": "application/json",
+        'Accept': 'application/json'
       },
       body: JSON.stringify({
-        "inputs": [ { "data": { "image": { "url": "https://samples.clarifai.com/food.jpg" } } } ]
+        "inputs": [
+          { "data":
+            { "image":
+              { "url": imgUrl }
+            }
+          }
+        ]
       })
     })
-    // .then((response) => {
-    //   console.log(response.json)
-    // })
+    .then((response) => response.json())
+    .then((responseJson) => {
+       return console.log(responseJson);
+     })
   }
 
   render() {
