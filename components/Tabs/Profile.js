@@ -4,12 +4,16 @@ import {
   Text,
   View,
 } from 'react-native';
-import AppCamera from './camera/AppCamera';
-import UserProfile from './profile/UserProfile';
+import AppCamera from '../camera/AppCamera';
+import UserProfile from '../profile/UserProfile';
 import { StackNavigator } from 'react-navigation';
-// import { Icon } from 'react-native-elements';
 
-export default class NavBar extends Component {
+export default class Profile extends Component {
+
+  constructor() {
+    
+  }
+
   render() {
     return(
       <View style={styles.container}>
@@ -21,7 +25,7 @@ export default class NavBar extends Component {
 
 const NavConfig = {
   Profile: { screen: UserProfile },
-  Cam: { screen : AppCamera },
+  Cam: { screen: AppCamera },
 };
 
 const NavTab = StackNavigator(NavConfig)
