@@ -1,21 +1,19 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
 import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View, 
+  Image
 } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import axios from 'axios';
 import Recipe from './components/recipeList/Recipe'
 import List from './components/recipeList/List'
 import RecipeScreen from './components/recipeList/RecipeScreen'
+import Login from './components/login/Login'
+import Registration from './components/register/Registration'
+
 
 export default class RecipeList extends Component {
 
@@ -51,6 +49,8 @@ export default class RecipeList extends Component {
       <View style={styles.container}>
         <Text style={styles.welcome}>List of recipes</Text>
         <List recipes={this.state.data} navigate={navigate}/>
+        <Login />
+        <Registration />
       </View>
     );
   }
@@ -70,19 +70,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+    backgroundColor: '#E0E0E0'
+  }
+  
 });
 
 AppRegistry.registerComponent('SeeFood', () => SeeFood);

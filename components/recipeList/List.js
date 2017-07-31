@@ -18,6 +18,6 @@ export default class List extends Component {
           return <Recipe navigate={navigate} title={recipe.title} key={i} />
         })}
       </View>
-          )
+    )
   }
 }
