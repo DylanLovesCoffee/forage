@@ -1,27 +1,54 @@
 import React, { Component } from 'react';
 import {
-  AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  Button,
+  ListView
 } from 'react-native';
-import axios from 'axios';
+import AppCamera from '../camera/AppCamera';
 
 export default class UserProfile extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
+    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
-      userFirstName: "User's First Name - DYNAMIC",
-      recipeList: undefined
+      userFirstName: "Dylan",
+      recipeList: ds.cloneWithRows(['Recipe1', 'Recipe2', 'Recipe3']),
     };
+  }
+
+  static navigationOptions = {
+    title: "Profile"
+  };
+
+  _onPress = () => {
+    this.props.navigation.navigate("Cam");
   }
 
   render() {
     return (
-      <View>
-        <Text>Hello, {this.state.userFirstName}</Text>
-        <Text>List Recipes Here: {this.state.recipeList}</Text>
+      <View style={styles.container}>
+        <View>
+          <Text>Hello, {this.state.userFirstName}</Text>
+          <ListView
+          dataSource={this.state.recipeList}
+          renderRow={(rowData) => <Text>{rowData}</Text>}
+          />
+      </View>
+        <View style={styles.container}>
+          <Button
+            title="Open Camera"
+            onPress={this._onPress} />
+        </View>
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    padding:10,
+    flex:1,
+  }
+})
