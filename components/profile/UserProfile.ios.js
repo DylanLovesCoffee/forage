@@ -8,19 +8,27 @@ import {
 import axios from 'axios';
 
 export default class UserProfile extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
       userFirstName: "User's First Name - DYNAMIC",
-      recipeList: undefined
+      recipeList: []
     };
+  }
+
+  componentDidMount() {
+    axios.get ('http://localhost:3000/recipes')
+    .then((response) => {
+      this.setState({ recipeList : response.data })
+    });
   }
 
   render() {
     return (
       <View>
         <Text>Hello, {this.state.userFirstName}</Text>
-        <Text>List Recipes Here: {this.state.recipeList}</Text>
+        <Text>List User's Used Recipes Here:</Text>
       </View>
     );
   }

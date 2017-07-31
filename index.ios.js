@@ -16,7 +16,6 @@ import Registration from './components/register/Registration'
 
 
 export default class RecipeList extends Component {
-
   constructor() {
     super();
     this.state = {
