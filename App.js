@@ -14,9 +14,9 @@ import List from './components/recipeList/List'
 import RecipeScreen from './components/recipeList/RecipeScreen'
 import Login from './components/account/Login'
 import Registration from './components/account/Registration'
-import Profile from './components/Screens/Profile';
 import RecipeList from './components/Screens/RecipeList';
 import AppCamera from './components/camera/AppCamera';
+import UserProfile from './components/profile/UserProfile'
 
 
 const Recipes = StackNavigator({
@@ -30,7 +30,7 @@ const Recipes = StackNavigator({
 })
 
 const SeeFood = TabNavigator({
-  Profile: { screen: Profile },
+  Profile: { screen: UserProfile },
   Camera: { screen: AppCamera }
 })
 
