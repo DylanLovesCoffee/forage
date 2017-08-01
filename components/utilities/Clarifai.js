@@ -16,9 +16,11 @@ export default class Clarifai extends Component {
   constructor() {
     super()
     this.state = {
-      search: ''
+      search: '',
+      data: ''
     }
     this.search = this.search.bind(this)
+    boom = this
   }
 
   callClarifai(url) {
@@ -41,14 +43,21 @@ export default class Clarifai extends Component {
     })
     .then((response) => response.json())
     .then((responseJson) => {
-       return console.log(responseJson);
+      var str=''
+      responseJson.outputs[0].data.concepts.forEach(function(obj) {
+        str += ',' + obj.name
+      })
+      boom.setState({ data: str })
      })
   }
 
   search() {
     console.log(this.state.search);
     this.callClarifai(this.state.search)
-  }
+    setTimeout(() => {
+      this.props.navigation.navigate('RecipeList', {name: boom.state.data})
+    }, 2000);
+    }
 
   render() {
     let { navigate } = this.props.navigation
@@ -67,11 +76,6 @@ export default class Clarifai extends Component {
         <Button
           onPress={this.search}
           title="Call Clarifai"
-          color="#841584"
-        />
-        <Button
-          onPress={() => navigate('RecipeList')}
-          title="Recipes"
           color="#841584"
         />
       </View>
