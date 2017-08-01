@@ -5,10 +5,7 @@ import {
   View,
   Button,
   CameraRoll,
-  Modal,
-  Image,
-  ScrollView,
-  TouchableHighlight
+  TouchableHighlight,
 } from 'react-native';
 import AppCamera from '../camera/AppCamera';
 import Share from 'react-native-share';
@@ -19,45 +16,56 @@ export default class PhotoSelection extends Component {
     super();
     this.state = {
       photos: [],
-      modalVisible: false,
-      index: null
     }
-  }
-
-  setIndex = (index) => {
-    if (index === this.state.index) {
-      index == null
-    }
-    this.setState({ index })
-  }
-
-  toggleModal = () => {
-    // const { navigate } = this.props.navigation
-    // navigate("ImageBrowser")
-    alert("TOGGLE MODAL")
   }
 
   _getPhotos = () => {
     CameraRoll.getPhotos({
-      first: 20,
+      first: 1,
       assetType: 'Photos'
     })
-    .then(response => this.setState({photos: response.edges}))
+    .then(response =>
+      this.setState({photos: response.edges})
+    )
   }
 
+  callClarifai(base) {
+    fetch("https://api.clarifai.com/v2/models/bd367be194cf45149e75f01d59f77ba7/outputs", {
+      method: "POST",
+      headers: {
+        "Authorization": "Key ed7a86a0f382417bb16c3bb3917407e5",
+        "Content-Type": "application/json",
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        "inputs": [
+          { "data":
+            { "image":
+              { "base64": base }
+            }
+          }
+        ]
+      })
+    })
+    .then((response) => response.json())
+    .then((responseJson) => {
+       return console.log(responseJson);
+     })
+   }
+
   share = () => {
-    const image = this.state.photos[this.state.index].node.image.uri
+    let image = this.state.photos[0].node.image.uri
     RNFetchBlob.fs.readFile(image, 'base64')
     .then((data) => {
-      let shareOptions = {
-        title: "React Native Share Example",
-        message: "Check out this photo!",
-        url: `data:image/jpg;base64,${data}`,
-        subject: "Check out this photo!"
-      }
-      Share.open(shareOptions)
-        .then((response) => console.log("res:", response))
-        .catch(error => console.log("err", error))
+      console.log("shared")
+      console.log(data)
+      this.callClarifai(data)
+      // let shareOptions = {
+      //   url: `data:image/jpg;base64,${data}`,
+      // }
+      // Share.open(shareOptions)
+      //   .then((response) => console.log("res:", response))
+      //   .catch(error => console.log("err", error))
     })
   }
 
@@ -68,71 +76,23 @@ export default class PhotoSelection extends Component {
           onPress={this._getPhotos}
           title="Get Photos"
         />
-        <Button
-          onPress={this.share}
-          title="Yoooo"
-        />
-        <Modal
-          animationType={"slide"}
-          transparent={false}
-          visible={this.state.modalVisible}
-          onRequestClose={console.log("closed")}
-        >
-          <View style={styles.modalContainer}>
-            <Button
-              title="Close"
-              onPress={this.toggleModal}
-            />
-            <ScrollView>
-              contentContainerStyle={styles.scrollView}
-              {
-                this.state.photos.map((photo, i) => {
-                  return(
-                    <TouchableHighlight
-                      style={{opacity: i === this.state.index ? 0.5 : 1}}
-                      key={i}
-                      underlayColor="transparent"
-                      onPress={this.setIndex(i)}
-                    >
-                      <Image
-                        style={{width: width/3, height: width/3}}
-                        source={{uri: photo.node.image.uri}}
-                      />
-                    </TouchableHighlight>
-                  )
-                })
-              }
-            </ScrollView>
-            {
-              this.state.index != null && (
-                <View style={styles.shareButton}>
-                  <Button
-                    title="Share"
-                    onPress={this.share}
-                  />
-                </View>
-              )
-            }
-          </View>
-        </Modal>
+        <View style={styles.shareButton}>
+          <Button
+            title="Share"
+            onPress={this.share}
+          />
+        </View>
       </View>
     )
   }
 }
 
-styles = StyleSheet.create({
+
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center"
-  },
-  modalContainer: {
-    paddingTop: 20,
-    flex: 1
-  },
-  scrollView: {
-    flexWrap: "wrap",
-    flexDirection: "row"
   },
   shareButton: {
     position: "absolute",
