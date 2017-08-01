@@ -18,7 +18,6 @@ export default class Clarifai extends Component {
     this.state = {
       search: ''
     }
-    this.callClarifai = this.callClarifai.bind(this)
     this.search = this.search.bind(this)
   }
 
