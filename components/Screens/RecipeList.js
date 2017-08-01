@@ -27,7 +27,7 @@ export default class RecipeList extends Component {
 
 
   componentDidMount() {
-    var str = "butter,crust,flour,eggs.sugar"
+    var str = this.props.navigation.state.params.name
     var url = "http://127.0.0.1:3000/results?food="
     axios.get(url+str)
       .then((response) => {
@@ -41,7 +41,6 @@ export default class RecipeList extends Component {
     return (
       <View style={styles.container}>
         <List recipes={this.state.data} navigate={navigate}/>
-        <Text>{this.props.navigation.state.params.name}</Text>
       </View>
     );
   }
