@@ -4,15 +4,24 @@ import {
   StyleSheet,
   Text,
   View,
-  Button
+  Button,
+  TextInput
 } from 'react-native';
 import { API_KEY } from 'react-native-dotenv'
+import App from '../../App'
+import RecipeList from '../Screens/RecipeList'
 
 export default class Clarifai extends Component {
 
-  callClarifai() {
-    let imgUrl = "https://static1.squarespace.com/static/548c9344e4b08a093ba313fd/t/56cfa6b020c647897cc48d5b/1456449200691/1-composition-with-variety-of-grocery-products-t-monticello.jpg?format=2500w"
+  constructor() {
+    super()
+    this.state = {
+      search: ''
+    }
+    this.search = this.search.bind(this)
+  }
 
+  callClarifai(url) {
     fetch("https://api.clarifai.com/v2/models/bd367be194cf45149e75f01d59f77ba7/outputs", {
       method: "POST",
       headers: {
@@ -24,7 +33,7 @@ export default class Clarifai extends Component {
         "inputs": [
           { "data":
             { "image":
-              { "url": imgUrl }
+              { "url": url }
             }
           }
         ]
@@ -34,14 +43,35 @@ export default class Clarifai extends Component {
     .then((responseJson) => {
        return console.log(responseJson);
      })
-}
+  }
+
+  search() {
+    console.log(this.state.search);
+    this.callClarifai(this.state.search)
+  }
 
   render() {
+    let { navigate } = this.props.navigation
     return(
       <View>
+        <TextInput
+          autoCorrect={false}
+          autoCapitalize='none'
+          placeholder="image URL"
+          placeholderTextColor="black"
+          returnKeyType="next"
+          onChangeText = {(text) => this.setState({search: text})}
+          value={this.state.search}
+          autoCorrect={false}
+        />
         <Button
-          onPress={this.callClarifai}
+          onPress={this.search}
           title="Call Clarifai"
+          color="#841584"
+        />
+        <Button
+          onPress={() => navigate('RecipeList')}
+          title="Recipes"
           color="#841584"
         />
       </View>
