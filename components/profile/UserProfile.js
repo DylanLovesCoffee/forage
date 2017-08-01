@@ -9,6 +9,7 @@ import {
   TouchableOpacity
 } from 'react-native';
 import AppCamera from '../camera/AppCamera';
+import Clarifai from '../utilities/Clarifai'
 
 export default class UserProfile extends Component {
   constructor() {
@@ -42,18 +43,7 @@ export default class UserProfile extends Component {
         dataSource={this.state.recipeList}
         renderRow={(rowData) => <Text>{rowData}</Text>}
         />
-        <TextInput
-          autoCorrect={false}
-          autoCapitalize='none'
-          placeholder="image URL"
-          placeholderTextColor="black"
-          returnKeyType="next"
-          onChangeText = {(text) => this.setState({search: text})}
-          value={this.state.search}
-          autoCorrect={false}
-          style={styles.input}
-        />
-        <Button title={"Clarifai"} onPress={this.search} />
+        <Clarifai />
       </View>
     );
   }
