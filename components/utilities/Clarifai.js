@@ -48,6 +48,7 @@ export default class Clarifai extends Component {
   search() {
     console.log(this.state.search);
     this.callClarifai(this.state.search)
+    this.props.navigation.navigate('RecipeList', {name: 'Yoosters'})
   }
 
   render() {
@@ -67,11 +68,6 @@ export default class Clarifai extends Component {
         <Button
           onPress={this.search}
           title="Call Clarifai"
-          color="#841584"
-        />
-        <Button
-          onPress={() => navigate('RecipeList')}
-          title="Recipes"
           color="#841584"
         />
       </View>
