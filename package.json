@@ -13,7 +13,9 @@
     "react": "16.0.0-alpha.12",
     "react-native": "^0.46.4",
     "react-native-camera": "git+https://github.com/lwansbrough/react-native-camera.git",
+    "react-native-fetch-blob": "^0.10.6",
     "react-native-router-flux": "^4.0.0-beta.15",
+    "react-native-share": "^1.0.20",
     "react-native-vector-icons": "^4.2.0",
     "react-navigation": "^1.0.0-beta.11"
   },

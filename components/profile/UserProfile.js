@@ -7,6 +7,7 @@ import {
   ListView
 } from 'react-native';
 import AppCamera from '../camera/AppCamera';
+import PhotoSelection from '../camera/PhotoSelection';
 
 export default class UserProfile extends Component {
   constructor() {
@@ -29,11 +30,12 @@ export default class UserProfile extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Hello, {this.state.userFirstName}</Text>
+        <PhotoSelection />
+        {/* <Text>Hello, {this.state.userFirstName}</Text>
         <ListView
         dataSource={this.state.recipeList}
         renderRow={(rowData) => <Text>{rowData}</Text>}
-        />
+        /> */}
       </View>
     );
   }
