@@ -5,10 +5,10 @@ import {
   Text,
   View,
   Image,
+  Button,
   CameraRoll,
   TouchableHighlight,
 } from 'react-native';
-import axios from 'axios';
 import Camera from 'react-native-camera';
 import Share from 'react-native-share';
 import RNFetchBlob from 'react-native-fetch-blob';
@@ -43,17 +43,6 @@ export default class AppCamera extends Component {
     )
   }
 
-
-  share = () => {
-    let image = this.state.photos[0].node.image.uri
-    RNFetchBlob.fs.readFile(image, 'base64')
-    .then((data) => {
-      console.log("shared")
-      console.log(data)
-      this.callClarifaiBase(data)
-    })
-  }
-
   callClarifaiBase(base) {
     fetch("https://api.clarifai.com/v2/models/bd367be194cf45149e75f01d59f77ba7/outputs", {
       method: "POST",
@@ -78,6 +67,14 @@ export default class AppCamera extends Component {
      })
    }
 
+   share = () => {
+     let image = this.state.photos[0].node.image.uri
+     RNFetchBlob.fs.readFile(image, 'base64')
+     .then((data) => {
+       this.callClarifaiBase(data)
+     })
+   }
+
   render() {
     return(
       <View style={styles.container}>
@@ -87,9 +84,10 @@ export default class AppCamera extends Component {
           }}
           style={styles.preview}
           aspect={Camera.constants.Aspect.fill}>
-          <TouchableHighlight onPress={this._getPhotos.bind(this)}>
-              <Text style={styles.capture} onPress={this.takePicture.bind(this)}>[SCAN FOOD]</Text>
+          <TouchableHighlight>
+              <Text style={styles.capture} onPress={this._getPhotos.bind(this)}>[SCAN FOOD]</Text>
           </TouchableHighlight>
+          <Button onPress={this.share} title="Send to Clarifai"/>
         </Camera>
       </View>
     )
