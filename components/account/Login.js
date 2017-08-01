@@ -13,13 +13,14 @@ import {
 import LoginForm from './LoginForm'
 
 export default class Login extends Component {
-  render() {
 
+  render() {
+    let { navigate } = this.props.navigation
     return (
       <KeyboardAvoidingView behavior="padding" >
 
         <View>
-          <LoginForm />
+          <LoginForm navigate={navigate}/>
         </View>
       </KeyboardAvoidingView>
     );
