@@ -4,7 +4,9 @@ import {
   Text,
   View,
   Button,
-  ListView
+  ListView,
+  TextInput,
+  TouchableOpacity
 } from 'react-native';
 import AppCamera from '../camera/AppCamera';
 
@@ -15,7 +17,9 @@ export default class UserProfile extends Component {
     this.state = {
       userFirstName: "Dylan",
       recipeList: ds.cloneWithRows(['Recipe1', 'Recipe2', 'Recipe3']),
+      search: ''
     };
+    this.search = this.search.bind(this)
   }
 
   static navigationOptions = {
@@ -26,6 +30,10 @@ export default class UserProfile extends Component {
     this.props.navigation.navigate("Cam");
   }
 
+  search(e) {
+    console.log(this.state.search);
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -34,6 +42,18 @@ export default class UserProfile extends Component {
         dataSource={this.state.recipeList}
         renderRow={(rowData) => <Text>{rowData}</Text>}
         />
+        <TextInput
+          autoCorrect={false}
+          autoCapitalize='none'
+          placeholder="image URL"
+          placeholderTextColor="black"
+          returnKeyType="next"
+          onChangeText = {(text) => this.setState({search: text})}
+          value={this.state.search}
+          autoCorrect={false}
+          style={styles.input}
+        />
+        <Button title={"Clarifai"} onPress={this.search} />
       </View>
     );
   }
