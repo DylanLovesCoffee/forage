@@ -20,7 +20,7 @@ import RecipeList from './components/Screens/RecipeList';
 import AppCamera from './components/camera/AppCamera';
 import UserProfile from './components/profile/UserProfile'
 
-const Main = StackNavigator({
+const Left = StackNavigator({
   Home: { screen: UserProfile },
   RecipeList: { screen: RecipeList },
   Recipe: {
@@ -29,19 +29,20 @@ const Main = StackNavigator({
       title: `${navigation.state.params.title}`,
     }),
    }
-})
+},)
 const Auth = TabNavigator({
   Login: { screen: Login },
   Register: { screen: RegistrationForm }
 })
-const Profile = TabNavigator({
-  Profile: { screen: Main },
+const Main = TabNavigator({
+  Profile: { screen: Left },
   Camera: { screen: AppCamera }
 })
 const SeeFood = StackNavigator({
   Home: { screen: Auth },
-  Profile: { screen: Profile }
-})
+  Main: { screen: Main }
+},
+{ headerMode: 'none' })
 
 const styles = StyleSheet.create({
   container: {
