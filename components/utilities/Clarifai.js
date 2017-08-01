@@ -8,6 +8,8 @@ import {
   TextInput
 } from 'react-native';
 import { API_KEY } from 'react-native-dotenv'
+import App from '../../App'
+import RecipeList from '../Screens/RecipeList'
 
 export default class Clarifai extends Component {
 
@@ -50,6 +52,7 @@ export default class Clarifai extends Component {
   }
 
   render() {
+    let { navigate } = this.props.navigation
     return(
       <View>
         <TextInput
@@ -65,6 +68,11 @@ export default class Clarifai extends Component {
         <Button
           onPress={this.search}
           title="Call Clarifai"
+          color="#841584"
+        />
+        <Button
+          onPress={() => navigate('RecipeList')}
+          title="Recipes"
           color="#841584"
         />
       </View>

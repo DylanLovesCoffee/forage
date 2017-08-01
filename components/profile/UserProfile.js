@@ -10,6 +10,8 @@ import {
 } from 'react-native';
 import AppCamera from '../camera/AppCamera';
 import Clarifai from '../utilities/Clarifai'
+import App from '../../App'
+import RecipeList from '../Screens/RecipeList'
 
 export default class UserProfile extends Component {
   constructor() {
@@ -36,6 +38,7 @@ export default class UserProfile extends Component {
   }
 
   render() {
+    let { navigation } = this.props
     return (
       <View style={styles.container}>
         <Text>Hello, {this.state.userFirstName}</Text>
@@ -43,7 +46,7 @@ export default class UserProfile extends Component {
         dataSource={this.state.recipeList}
         renderRow={(rowData) => <Text>{rowData}</Text>}
         />
-        <Clarifai />
+        <Clarifai navigation={navigation}/>
       </View>
     );
   }
