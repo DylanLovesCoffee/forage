@@ -9,7 +9,7 @@ import {
   StatusBar
 } from 'react-native';
 import {firebaseRef} from '../services/Firebase'
-import Actions from 'react-native-router-flux'
+import { Actions } from 'react-native-router-flux'
 import _ from 'lodash'
 
 export default class RegistrationForm extends Component {
@@ -87,18 +87,14 @@ export default class RegistrationForm extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 20
-  },
-  form: {
-    marginTop: 210
+    justifyContent: 'center',
+    padding: 20,
+    marginTop: 390
   },
   input: {
     height: 40,
-    backgroundColor: '#B2EBF2',
-    color: 'black',
     marginBottom: 15,
-    color: '#FFFFFF',
-    paddingHorizontal: 100
+    borderBottomWidth: 1,
   },
   registerButtonContainer: {
     backgroundColor: '#34495e',
