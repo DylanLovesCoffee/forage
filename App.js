@@ -30,13 +30,17 @@ const Main = StackNavigator({
     }),
    }
 })
-const SeeFood = TabNavigator({
+const Auth = TabNavigator({
   Login: { screen: Login },
   Register: { screen: RegistrationForm }
 })
 const Profile = TabNavigator({
   Profile: { screen: Main },
   Camera: { screen: AppCamera }
+})
+const SeeFood = StackNavigator({
+  Home: { screen: Auth },
+  Profile: { screen: Profile }
 })
 
 const styles = StyleSheet.create({
@@ -48,20 +52,3 @@ const styles = StyleSheet.create({
 });
 
 AppRegistry.registerComponent('SeeFood', () => SeeFood);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
