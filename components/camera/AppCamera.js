@@ -5,29 +5,75 @@ import {
   Text,
   View,
   Image,
-  Dimensions,
+  Button,
+  CameraRoll,
   TouchableHighlight,
 } from 'react-native';
-import axios from 'axios';
 import Camera from 'react-native-camera';
+import Share from 'react-native-share';
+import RNFetchBlob from 'react-native-fetch-blob';
+import { API_KEY } from 'react-native-dotenv'
 
 export default class AppCamera extends Component {
+  constructor(){
+    super();
+    this.state = {
+      photos: [],
+    }
+  }
 
   static navigationOptions = {
     title: "Scan Your Groceries"
   };
 
-  clickedme = () => {
-    alert("was touched");
-  }
-
   takePicture() {
     const options = {};
-    //options.location = ...
     this.camera.capture({metadata: options})
-      .then((data) => console.log(data))
-      .catch(err => console.error(err));
+    .then((data) => console.log(data))
+    .catch(err => console.error(err));
   }
+
+  _getPhotos = () => {
+    CameraRoll.getPhotos({
+      first: 1,
+      assetType: 'Photos'
+    })
+    .then(response =>
+      this.setState({photos: response.edges})
+    )
+  }
+
+  callClarifaiBase(base) {
+    fetch("https://api.clarifai.com/v2/models/bd367be194cf45149e75f01d59f77ba7/outputs", {
+      method: "POST",
+      headers: {
+        "Authorization": "Key " + API_KEY,
+        "Content-Type": "application/json",
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        "inputs": [
+          { "data":
+            { "image":
+              { "base64": base }
+            }
+          }
+        ]
+      })
+    })
+    .then((response) => response.json())
+    .then((responseJson) => {
+       return console.log(responseJson);
+     })
+   }
+
+   share = () => {
+     let image = this.state.photos[0].node.image.uri
+     RNFetchBlob.fs.readFile(image, 'base64')
+     .then((data) => {
+       this.callClarifaiBase(data)
+     })
+   }
 
   render() {
     return(
@@ -38,9 +84,10 @@ export default class AppCamera extends Component {
           }}
           style={styles.preview}
           aspect={Camera.constants.Aspect.fill}>
-          <TouchableHighlight onPress={this.clickedme.bind(this)}>
-              <Text style={styles.capture} onPress={this.takePicture.bind(this)}>[SCAN FOOD]</Text>
+          <TouchableHighlight>
+              <Text style={styles.capture} onPress={this._getPhotos.bind(this)}>[SCAN FOOD]</Text>
           </TouchableHighlight>
+          <Button onPress={this.share} title="Send to Clarifai"/>
         </Camera>
       </View>
     )
