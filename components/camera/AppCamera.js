@@ -32,7 +32,7 @@ export default class AppCamera extends Component {
     this.camera.capture({metadata: options})
     .then((data) => console.log(data))
     .catch(err => console.error(err))
-    .then(this.getPhotos);
+    .then(this.getPhotos)
   }
 
   getPhotos = () => {
@@ -43,6 +43,7 @@ export default class AppCamera extends Component {
     .then(response =>
       this.setState({photos: response.edges})
     )
+    .then(this.share)
   }
 
   callClarifaiBase(base) {
@@ -89,7 +90,6 @@ export default class AppCamera extends Component {
           <TouchableHighlight>
               <Text style={styles.capture}  onPress={this.takePicture.bind(this)}>[CAPTURE]</Text>
           </TouchableHighlight>
-          <Button onPress={this.share} title="Send to Clarifai"/>
         </Camera>
       </View>
     )
