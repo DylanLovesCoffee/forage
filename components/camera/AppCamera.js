@@ -12,7 +12,8 @@ import {
 import Camera from 'react-native-camera';
 import Share from 'react-native-share';
 import RNFetchBlob from 'react-native-fetch-blob';
-import { API_KEY } from 'react-native-dotenv'
+import { API_KEY } from 'react-native-dotenv';
+// import { Icon, Button } from 'native-base';
 
 export default class AppCamera extends Component {
   constructor(){
@@ -30,10 +31,11 @@ export default class AppCamera extends Component {
     const options = {};
     this.camera.capture({metadata: options})
     .then((data) => console.log(data))
-    .catch(err => console.error(err));
+    .catch(err => console.error(err))
+    .then(this.getPhotos)
   }
 
-  _getPhotos = () => {
+  getPhotos = () => {
     CameraRoll.getPhotos({
       first: 1,
       assetType: 'Photos'
@@ -41,6 +43,7 @@ export default class AppCamera extends Component {
     .then(response =>
       this.setState({photos: response.edges})
     )
+    .then(this.share)
   }
 
   callClarifaiBase(base) {
@@ -85,9 +88,8 @@ export default class AppCamera extends Component {
           style={styles.preview}
           aspect={Camera.constants.Aspect.fill}>
           <TouchableHighlight>
-              <Text style={styles.capture} onPress={this._getPhotos.bind(this)}>[SCAN FOOD]</Text>
+              <Text style={styles.capture}  onPress={this.takePicture.bind(this)}>[CAPTURE]</Text>
           </TouchableHighlight>
-          <Button onPress={this.share} title="Send to Clarifai"/>
         </Camera>
       </View>
     )
