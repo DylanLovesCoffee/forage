@@ -64,27 +64,26 @@ export default class LoginForm extends Component {
             autoCorrect={false}
             style={styles.input}
           />
-            <TextInput
-              autoCorrect={false}
-              autoCapitalize='none'
-              placeholder="password"
-              placeholderTextColor="black"
-              onChangeText = {(text) => this.setState({password: text})}
-              value={this.state.password}
-              returnKeyType="go"
-              secureTextEntry
-              style={styles.input}
-              ref={(input) => this.passwordInput = input}
-            />
-          </View>
-
-          <View style={styles.login}>
-            <TouchableOpacity style={styles.loginButtonContainer} onPress={this._login.bind(this)}>
-              <Text style={styles.loginButtonText}>LOGIN</Text>
-            </TouchableOpacity>
-          </View>
+          <TextInput
+            autoCorrect={false}
+            autoCapitalize='none'
+            placeholder="password"
+            placeholderTextColor="black"
+            onChangeText = {(text) => this.setState({password: text})}
+            value={this.state.password}
+            returnKeyType="go"
+            secureTextEntry
+            style={styles.input}
+            ref={(input) => this.passwordInput = input}
+          />
+        </View>
+        <View style={styles.login}>
+          <TouchableOpacity style={styles.loginButtonContainer} onPress={this._login.bind(this)}>
+            <Text style={styles.loginButtonText}>LOGIN</Text>
+          </TouchableOpacity>
         </View>
       </View>
+    </View>
     );
   }
 }
