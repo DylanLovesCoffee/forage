@@ -14,6 +14,7 @@ import {firebaseRef} from '../services/Firebase'
 import { Actions } from 'react-native-router-flux'
 import _ from 'lodash'
 import { StackNavigator } from 'react-navigation';
+import App from '../../App';
 
 export default class LoginForm extends Component {
 
@@ -28,10 +29,14 @@ export default class LoginForm extends Component {
     this._login = this._login.bind(this)
   }
 
+  static navigationOptions = {
+    title: "Login"
+  };
+
   _login() {
     firebaseRef.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then(function(user){
-      console.log('hello')
-    }).catch(function(error) {
+      this.props.navigate('Profile')
+    }.bind(this)).catch(function(error) {
       console.log(error.code)
       console.log(error.message)
     })
@@ -40,7 +45,6 @@ export default class LoginForm extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Image>
           <TextInput
             autoCorrect={false}
             autoCapitalize='none'
@@ -55,7 +59,7 @@ export default class LoginForm extends Component {
             style={styles.input}
           />
 
-          <TextInput 
+          <TextInput
             autoCorrect={false}
             autoCapitalize='none'
             placeholder="password"
@@ -73,7 +77,6 @@ export default class LoginForm extends Component {
             <Text style={styles.loginButtonText}>LOGIN</Text>
           </TouchableOpacity>
         </View> 
-      </Image>
     </View>
     );
   }
@@ -106,11 +109,9 @@ const styles = StyleSheet.create({
   },
   registration: {
     alignItems: 'center'
-  }, 
+  },
   registerButtonContainer: {
     marginTop: 15
-  },
-  
+
+  }
 });
-
-
