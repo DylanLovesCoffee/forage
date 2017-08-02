@@ -7,7 +7,8 @@ import {
   View,
   TouchableOpacity,
   StatusBar,
-  Image
+  Image,
+  KeyboardAvoidingView
 } from 'react-native';
 import RegistrationForm from './RegistrationForm'
 import {firebaseRef} from '../services/Firebase'
@@ -17,6 +18,8 @@ import { StackNavigator } from 'react-navigation';
 import App from '../../App';
 
 export default class LoginForm extends Component {
+
+  
 
   constructor(props) {
     super(props)
@@ -43,14 +46,10 @@ export default class LoginForm extends Component {
   }
 
   render() {
-    return (
-<<<<<<< HEAD
-      <View style={styles.container}>
-=======
-      <View style={styles.color}>
+  return (
+    <View style={styles.color}>
       <View style={styles.container}>
         <View style={styles.form}>
->>>>>>> Style login and register page and position login button
           <TextInput
             autoCorrect={false}
             autoCapitalize='none'
@@ -65,11 +64,7 @@ export default class LoginForm extends Component {
             style={styles.input}
           />
 
-<<<<<<< HEAD
           <TextInput
-=======
-          <TextInput 
->>>>>>> Style login and register page and position login button
             autoCorrect={false}
             autoCapitalize='none'
             placeholder="password"
@@ -81,22 +76,16 @@ export default class LoginForm extends Component {
             style={styles.input}
             ref={(input) => this.passwordInput = input}
           />
-<<<<<<< HEAD
-=======
         </View>
->>>>>>> Style login and register page and position login button
 
         <View style={styles.login}>
           <TouchableOpacity style={styles.loginButtonContainer} onPress={this._login}>
             <Text style={styles.loginButtonText}>LOGIN</Text>
           </TouchableOpacity>
         </View> 
-<<<<<<< HEAD
+      </View>
     </View>
-=======
-      </View>
-      </View>
->>>>>>> Style login and register page and position login button
+
     );
   }
 }
@@ -106,9 +95,6 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
     padding: 20,
-<<<<<<< HEAD
-    marginTop: 390,
-=======
     marginTop: 220
   },
   color: {
@@ -116,13 +102,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#4DB6AC'
   },
   form: {
-
->>>>>>> Style login and register page and position login button
   },
   input: {
     height: 40,
     marginBottom: 15,
     borderBottomWidth: 1,
+    borderColor: 'white'
   },
   loginButtonContainer: {
     backgroundColor: '#34495e',
@@ -130,25 +115,19 @@ const styles = StyleSheet.create({
     height: 40,
     borderWidth: 2,
     borderRadius: 20,
+    borderColor: 'white',
     overflow: 'hidden'
   },
   loginButtonText: {
     textAlign: 'center',
     color: '#FFFFFF',
     fontWeight: '700'
-<<<<<<< HEAD
   },
   registration: {
     alignItems: 'center'
   },
   registerButtonContainer: {
     marginTop: 15
-=======
   }
   
-});
-
->>>>>>> Style login and register page and position login button
-
-  }
 });
