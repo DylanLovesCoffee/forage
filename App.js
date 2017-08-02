@@ -33,7 +33,13 @@ const Left = StackNavigator({
 
 const Scanner = StackNavigator({
   Cam: { screen: AppCamera },
-  RecipeList: { screen: RecipeList }
+  List: { screen: RecipeList },
+  Recipe: {
+    screen: RecipeScreen,
+    navigationOptions: ({navigation}) => ({
+      title: `${navigation.state.params.title}`,
+    })
+   }
 })
 
 const Auth = TabNavigator({
