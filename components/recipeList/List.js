@@ -15,7 +15,7 @@ export default class List extends Component {
     return(
       <View>
         {recipes.map(function(recipe, i) {
-          return <Recipe navigate={navigate} title={recipe.title} key={i} />
+          return <Recipe navigate={navigate} instructions={recipe.instructions} title={recipe.title} key={i} />
         })}
       </View>
     )
