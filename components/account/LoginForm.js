@@ -45,10 +45,6 @@ export default class LoginForm extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Image
-          // source={require('../img/orange.jpg')}
-        />
-        <View style={styles.form}>
           <TextInput
             autoCorrect={false}
             autoCapitalize='none'
@@ -75,15 +71,13 @@ export default class LoginForm extends Component {
             style={styles.input}
             ref={(input) => this.passwordInput = input}
           />
-        </View>
 
         <View style={styles.login}>
           <TouchableOpacity style={styles.loginButtonContainer} onPress={this._login}>
             <Text style={styles.loginButtonText}>LOGIN</Text>
           </TouchableOpacity>
-        </View>
-
-      </View>
+        </View> 
+    </View>
     );
   }
 }
@@ -93,7 +87,7 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
     padding: 20,
-    marginTop: 390
+    marginTop: 390,
   },
   input: {
     height: 40,
@@ -104,6 +98,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#34495e',
     padding: 10,
     height: 40,
+    borderWidth: 2,
     borderRadius: 20,
     overflow: 'hidden'
   },
@@ -117,5 +112,6 @@ const styles = StyleSheet.create({
   },
   registerButtonContainer: {
     marginTop: 15
+
   }
 });

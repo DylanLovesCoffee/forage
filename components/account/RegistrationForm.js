@@ -101,6 +101,7 @@ const styles = StyleSheet.create({
     padding: 10,
     height: 40,
     borderRadius: 20,
+    borderWidth: 2,
     overflow: 'hidden'
   },
   loginButtonText: {
