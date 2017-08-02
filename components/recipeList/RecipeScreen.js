@@ -3,7 +3,8 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  ScrollView
 } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 
@@ -14,11 +15,11 @@ export default class RecipeScreen extends Component {
     let instructionsString = this.props.navigation.state.params.instructions.replace(/\s+/g,' ').trim();
     let instructionsArray = instructionsString.split('. ')
     return(
-      <View>
+      <ScrollView>
         {instructionsArray.map(function(line) {
           return<Text>{line + ". \n"}</Text>
         })}
-      </View>
+    </ScrollView>
     )
   }
 }
