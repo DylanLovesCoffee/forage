@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import axios from 'axios';
 import List from '../recipeList/List'
+import { RFN_KEY } from 'react-native-dotenv';
 
 export default class RecipeList extends Component {
   constructor() {
@@ -28,12 +29,13 @@ export default class RecipeList extends Component {
 
   componentDidMount() {
     var str = this.props.navigation.state.params.name
-    var url = "http://127.0.0.1:3000/results?food="
-    axios.get(url+str)
-      .then((response) => {
-        console.log(response);
-        this.setState({ data : response.data })
-      })
+    var url = "https://protected-mesa-93226.herokuapp.com/results?food="
+    var key = "&api_key=" + RFN_KEY
+    axios.get(url + str + key)
+    .then((response) => {
+      console.log(response);
+      this.setState({ data : response.data })
+    })
   }
 
   render() {

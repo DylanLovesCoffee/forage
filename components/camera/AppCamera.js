@@ -56,6 +56,8 @@ export default class AppCamera extends Component {
   }
 
   callClarifaiBase(base) {
+    let helpMe = this
+
     fetch("https://api.clarifai.com/v2/models/bd367be194cf45149e75f01d59f77ba7/outputs", {
       method: "POST",
       headers: {
@@ -84,10 +86,11 @@ export default class AppCamera extends Component {
          console.log(ingredients)
        });
        this.setState({ items: ingredients })
+       setTimeout(
+         () => { helpMe.props.navigation.navigate("List", {name: this.state.items}) },
+         2000
+       )
      })
-     .done(
-       this.props.navigation.navigate("List", {name: this.state.items})
-     )
    }
 
   render() {
