@@ -13,9 +13,12 @@ import RegistrationForm from './RegistrationForm'
 
 export default class Registration extends Component {
   render() {
+
     return (
       <KeyboardAvoidingView behavior="padding">
-        <RegistrationForm />
+        <View style={styles.bkgcontainer}>
+          <RegistrationForm />
+        </View>
       </KeyboardAvoidingView>
     );
   }

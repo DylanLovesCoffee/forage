@@ -7,7 +7,8 @@ import {
   View,
   TouchableOpacity,
   StatusBar,
-  Image
+  Image,
+  KeyboardAvoidingView
 } from 'react-native';
 import RegistrationForm from './RegistrationForm'
 import {firebaseRef} from '../services/Firebase'
@@ -16,6 +17,8 @@ import _ from 'lodash'
 import { StackNavigator } from 'react-navigation';
 
 export default class LoginForm extends Component {
+
+  
 
   constructor(props) {
     super(props)
@@ -39,42 +42,44 @@ export default class LoginForm extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <Image>
-          <TextInput
-            autoCorrect={false}
-            autoCapitalize='none'
-            placeholder="email"
-            placeholderTextColor="black"
-            returnKeyType="next"
-            onChangeText = {(text) => this.setState({email: text})}
-            value={this.state.email}
-            onSubmitEditing={() => this.passwordInput.focus()}
-            keyboardType="email-address"
-            autoCorrect={false}
-            style={styles.input}
-          />
+      <View bkgcolor>
+        <View style={styles.container}>
+          <View style={styles.form}>
+            <TextInput
+              autoCorrect={false}
+              autoCapitalize='none'
+              placeholder="email"
+              placeholderTextColor="black"
+              returnKeyType="next"
+              onChangeText = {(text) => this.setState({email: text})}
+              value={this.state.email}
+              onSubmitEditing={() => this.passwordInput.focus()}
+              keyboardType="email-address"
+              autoCorrect={false}
+              style={styles.input}
+            />
 
-          <TextInput 
-            autoCorrect={false}
-            autoCapitalize='none'
-            placeholder="password"
-            placeholderTextColor="black"
-            onChangeText = {(text) => this.setState({password: text})}
-            value={this.state.password}
-            returnKeyType="go"
-            secureTextEntry
-            style={styles.input}
-            ref={(input) => this.passwordInput = input}
-          />
+            <TextInput 
+              autoCorrect={false}
+              autoCapitalize='none'
+              placeholder="password"
+              placeholderTextColor="black"
+              onChangeText = {(text) => this.setState({password: text})}
+              value={this.state.password}
+              returnKeyType="go"
+              secureTextEntry
+              style={styles.input}
+              ref={(input) => this.passwordInput = input}
+            />
+          </View>
 
-        <View style={styles.login}>
-          <TouchableOpacity style={styles.loginButtonContainer} onPress={this._login}>
-            <Text style={styles.loginButtonText}>LOGIN</Text>
-          </TouchableOpacity>
-        </View> 
-      </Image>
-    </View>
+          <View style={styles.login}>
+            <TouchableOpacity style={styles.loginButtonContainer} onPress={this._login}>
+              <Text style={styles.loginButtonText}>LOGIN</Text>
+            </TouchableOpacity>
+          </View> 
+        </View>
+      </View>
     );
   }
 }
@@ -84,12 +89,17 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
     padding: 20,
-    marginTop: 390,
+    marginTop: 350,
+  },
+  bkgcolor:{
+    backgroundColor: '#4DB6AC',
+    padding: 20
   },
   input: {
     height: 40,
     marginBottom: 15,
     borderBottomWidth: 1,
+    borderColor: 'white'
   },
   loginButtonContainer: {
     backgroundColor: '#34495e',
@@ -97,6 +107,7 @@ const styles = StyleSheet.create({
     height: 40,
     borderWidth: 2,
     borderRadius: 20,
+    borderColor: 'white',
     overflow: 'hidden'
   },
   loginButtonText: {
