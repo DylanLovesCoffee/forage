@@ -19,7 +19,7 @@ import App from '../../App';
 
 export default class LoginForm extends Component {
 
-  
+
 
   constructor(props) {
     super(props)
@@ -37,8 +37,9 @@ export default class LoginForm extends Component {
   };
 
   _login() {
-    firebaseRef.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then(function(user){
-      this.props.navigate('Profile')
+    firebaseRef.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
+    .then(function(user){
+      this.props.navigation.navigate('Profile')
     }.bind(this)).catch(function(error) {
       console.log(error.code)
       console.log(error.message)
@@ -79,10 +80,10 @@ export default class LoginForm extends Component {
           </View>
 
           <View style={styles.login}>
-            <TouchableOpacity style={styles.loginButtonContainer} onPress={this._login}>
+            <TouchableOpacity style={styles.loginButtonContainer} onPress={this._login.bind(this)}>
               <Text style={styles.loginButtonText}>LOGIN</Text>
             </TouchableOpacity>
-          </View> 
+          </View>
         </View>
       </View>
     );
@@ -123,5 +124,5 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     fontWeight: '700'
   }
-  
+
 });

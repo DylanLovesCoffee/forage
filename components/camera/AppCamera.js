@@ -100,7 +100,7 @@ export default class AppCamera extends Component {
           style={styles.preview}
           aspect={Camera.constants.Aspect.fill}>
           <TouchableHighlight>
-              <Text style={styles.capture}  onPress={this.takePicture.bind(this)}>[CAPTURE]</Text>
+              <Text style={styles.capture}  onPress={this.takePicture.bind(this)}>[SCAN]</Text>
           </TouchableHighlight>
         </Camera>
       </View>
@@ -122,9 +122,8 @@ const styles = StyleSheet.create({
   },
   capture: {
     flex: 0,
-    backgroundColor: '#fff',
     borderRadius: 5,
-    color: '#000',
+    color: '#D3D3D3',
     padding: 10,
     margin: 40
   },

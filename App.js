@@ -43,10 +43,10 @@ const Scanner = StackNavigator({
    }
 })
 
-const Auth = TabNavigator({
+const Auth = StackNavigator({
   Login: { screen: Login },
   LoginForm: { screen: LoginForm },
-  Register: { screen: RegistrationForm }
+  Register: { screen: RegistrationForm },
 })
 const Main = TabNavigator({
   Profile: { screen: Left },
