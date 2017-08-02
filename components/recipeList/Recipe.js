@@ -11,11 +11,11 @@ import { StackNavigator } from 'react-navigation';
 export default class Recipe extends Component {
   render() {
 
-    let {title, navigate} = this.props
+    let {title, navigate, instructions} = this.props
     return(
       <Button
-        onPress={() => navigate('Recipe', { title: title })}
-        title={title}
+        onPress={() => navigate('Recipe', { title: title, instructions: instructions })}
+        title={title} instructions={instructions}
       />
     )
   }
