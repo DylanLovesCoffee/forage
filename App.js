@@ -30,13 +30,19 @@ const Left = StackNavigator({
     }),
    }
 },)
+
+const Scanner = StackNavigator({
+  Cam: { screen: AppCamera },
+  RecipeList: { screen: RecipeList }
+})
+
 const Auth = TabNavigator({
   Login: { screen: Login },
   Register: { screen: RegistrationForm }
 })
 const Main = TabNavigator({
   Profile: { screen: Left },
-  Camera: { screen: AppCamera }
+  Camera: { screen: Scanner }
 })
 const SeeFood = StackNavigator({
   Home: { screen: Auth },

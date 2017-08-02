@@ -20,6 +20,7 @@ export default class AppCamera extends Component {
     super();
     this.state = {
       photos: [],
+      items: ''
     }
   }
 
@@ -66,7 +67,15 @@ export default class AppCamera extends Component {
     })
     .then((response) => response.json())
     .then((responseJson) => {
-       return console.log(responseJson);
+      let ingredients = ''
+       console.log(responseJson.outputs[0].data.concepts)
+       responseJson.outputs[0].data.concepts.forEach(function(ingredient) {
+         if (ingredient.value > 0.85) {
+           ingredients += ',' + ingredient.name
+         };
+         console.log(ingredients)
+       });
+       this.setState({ items: ingredients })
      })
    }
 
