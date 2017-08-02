@@ -15,6 +15,7 @@ import {firebaseRef} from '../services/Firebase'
 import { Actions } from 'react-native-router-flux'
 import _ from 'lodash'
 import { StackNavigator } from 'react-navigation';
+import App from '../../App';
 
 export default class LoginForm extends Component {
 
@@ -31,10 +32,14 @@ export default class LoginForm extends Component {
     this._login = this._login.bind(this)
   }
 
+  static navigationOptions = {
+    title: "Login"
+  };
+
   _login() {
     firebaseRef.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then(function(user){
-      console.log('hello')
-    }).catch(function(error) {
+      this.props.navigate('Profile')
+    }.bind(this)).catch(function(error) {
       console.log(error.code)
       console.log(error.message)
     })
@@ -43,42 +48,42 @@ export default class LoginForm extends Component {
   render() {
     return (
       <View style={styles.color}>
-      <View style={styles.container}>
-        <View style={styles.form}>
-          <TextInput
-            autoCorrect={false}
-            autoCapitalize='none'
-            placeholder="email"
-            placeholderTextColor="black"
-            returnKeyType="next"
-            onChangeText = {(text) => this.setState({email: text})}
-            value={this.state.email}
-            onSubmitEditing={() => this.passwordInput.focus()}
-            keyboardType="email-address"
-            autoCorrect={false}
-            style={styles.input}
-          />
+        <View style={styles.container}>
+          <View style={styles.form}>
+            <TextInput
+              autoCorrect={false}
+              autoCapitalize='none'
+              placeholder="email"
+              placeholderTextColor="black"
+              returnKeyType="next"
+              onChangeText = {(text) => this.setState({email: text})}
+              value={this.state.email}
+              onSubmitEditing={() => this.passwordInput.focus()}
+              keyboardType="email-address"
+              autoCorrect={false}
+              style={styles.input}
+            />
 
-          <TextInput 
-            autoCorrect={false}
-            autoCapitalize='none'
-            placeholder="password"
-            placeholderTextColor="black"
-            onChangeText = {(text) => this.setState({password: text})}
-            value={this.state.password}
-            returnKeyType="go"
-            secureTextEntry
-            style={styles.input}
-            ref={(input) => this.passwordInput = input}
-          />
+            <TextInput
+              autoCorrect={false}
+              autoCapitalize='none'
+              placeholder="password"
+              placeholderTextColor="black"
+              onChangeText = {(text) => this.setState({password: text})}
+              value={this.state.password}
+              returnKeyType="go"
+              secureTextEntry
+              style={styles.input}
+              ref={(input) => this.passwordInput = input}
+            />
+          </View>
+
+          <View style={styles.login}>
+            <TouchableOpacity style={styles.loginButtonContainer} onPress={this._login}>
+              <Text style={styles.loginButtonText}>LOGIN</Text>
+            </TouchableOpacity>
+          </View> 
         </View>
-
-        <View style={styles.login}>
-          <TouchableOpacity style={styles.loginButtonContainer} onPress={this._login}>
-            <Text style={styles.loginButtonText}>LOGIN</Text>
-          </TouchableOpacity>
-        </View> 
-      </View>
       </View>
     );
   }
@@ -120,5 +125,3 @@ const styles = StyleSheet.create({
   }
   
 });
-
-

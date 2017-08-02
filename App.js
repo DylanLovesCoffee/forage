@@ -21,7 +21,7 @@ import RecipeList from './components/Screens/RecipeList';
 import AppCamera from './components/camera/AppCamera';
 import UserProfile from './components/profile/UserProfile'
 
-const Main = StackNavigator({
+const Left = StackNavigator({
   Home: { screen: UserProfile },
   RecipeList: { screen: RecipeList },
   Recipe: {
@@ -30,16 +30,33 @@ const Main = StackNavigator({
       title: `${navigation.state.params.title}`,
     }),
    }
+},)
+
+const Scanner = StackNavigator({
+  Cam: { screen: AppCamera },
+  List: { screen: RecipeList },
+  Recipe: {
+    screen: RecipeScreen,
+    navigationOptions: ({navigation}) => ({
+      title: `${navigation.state.params.title}`,
+    })
+   }
 })
-const SeeFood = StackNavigator({
+
+const Auth = TabNavigator({
   Login: { screen: Login },
   LoginForm: { screen: LoginForm },
   Register: { screen: RegistrationForm }
 })
-const Profile = TabNavigator({
-  Profile: { screen: Main },
-  Camera: { screen: AppCamera }
+const Main = TabNavigator({
+  Profile: { screen: Left },
+  Camera: { screen: Scanner }
 })
+const SeeFood = StackNavigator({
+  Home: { screen: Auth },
+  Main: { screen: Main }
+},
+{ headerMode: 'none' })
 
 const styles = StyleSheet.create({
   container: {

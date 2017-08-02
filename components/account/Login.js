@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 
 export default class Login extends Component {
+
   static navigationOptions = {
     title: 'Home'
   }
@@ -26,7 +27,6 @@ export default class Login extends Component {
           <TouchableOpacity style={styles.loginButton} onPress={() => navigate('LoginForm')}>
            <Text style={styles.loginText}>Sign in</Text>
           </TouchableOpacity>
-
           <TouchableOpacity style={styles.registerButton} onPress={() => navigate('Register')}>
            <Text style={styles.registerText}>Create account</Text>
           </TouchableOpacity>
@@ -83,7 +83,3 @@ const styles = StyleSheet.create({
     fontWeight: '300'
   }
 });
-
-
-
-
