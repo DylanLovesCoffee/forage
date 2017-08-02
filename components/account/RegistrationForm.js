@@ -41,7 +41,6 @@ export default class RegistrationForm extends Component {
   render() {
     return (
       <View style={styles.bkgColor}>
-          <StatusBar barStyle="light-content"/>
         <View style={styles.container}>
           <View style={styles.form}>
             <TextInput
@@ -84,13 +83,14 @@ export default class RegistrationForm extends Component {
 
 const styles = StyleSheet.create({
   bkgColor: {
+    flex: 1,
     backgroundColor: '#4DB6AC',
-    padding: 20
+    padding: 15
+
   },
   container: {
-    justifyContent: 'center',
     padding: 20,
-    marginTop: 390,
+    marginTop: 180,
   },
   input: {
     height: 40,
@@ -103,9 +103,12 @@ const styles = StyleSheet.create({
     padding: 10,
     height: 40,
     borderRadius: 20,
-    borderWidth: 2,
+    borderWidth: 1,
     borderColor: 'white',
     overflow: 'hidden',
+  },
+  registration: {
+
   },
   loginButtonText: {
     textAlign: 'center',

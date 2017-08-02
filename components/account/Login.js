@@ -7,19 +7,30 @@ import {
   View,
   TouchableOpacity,
   Image,
-  KeyboardAvoidingView
+  KeyboardAvoidingView,
+  Button
 } from 'react-native';
 
-import LoginForm from './LoginForm'
-
 export default class Login extends Component {
+  static navigationOptions = {
+    title: 'Home'
+  }
   render() {
+    const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
         <View style={styles.img}>  
           <Image source={require('../img/OmakaseWhite.png')}style={styles.logo}/>
         </View>
-        <LoginForm />
+        <View style={styles.account}>
+          <TouchableOpacity style={styles.loginButton} onPress={() => navigate('LoginForm')}>
+           <Text style={styles.loginText}>Sign in</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.registerButton} onPress={() => navigate('Register')}>
+           <Text style={styles.registerText}>Create account</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     );
   }
@@ -46,6 +57,30 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#ffffff',
     padding: 20
+  },
+  loginButton: {
+    backgroundColor: '#34495e',
+    padding: 10,
+    height: 40,
+    borderRadius: 20,
+    borderWidth: 1,
+    borderColor: 'white',
+    overflow: 'hidden',
+  },
+  registerButton: {
+
+  },
+  account: {
+    marginBottom: 90
+  },
+  loginText: {
+    textAlign: 'center',
+    color: '#FFFFFF',
+    fontWeight: '700'
+  },
+  registerText: {
+    textAlign: 'center',
+    fontWeight: '300'
   }
 });
 

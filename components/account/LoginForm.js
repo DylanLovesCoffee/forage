@@ -42,43 +42,43 @@ export default class LoginForm extends Component {
 
   render() {
     return (
-      <View bkgcolor>
-        <View style={styles.container}>
-          <View style={styles.form}>
-            <TextInput
-              autoCorrect={false}
-              autoCapitalize='none'
-              placeholder="email"
-              placeholderTextColor="black"
-              returnKeyType="next"
-              onChangeText = {(text) => this.setState({email: text})}
-              value={this.state.email}
-              onSubmitEditing={() => this.passwordInput.focus()}
-              keyboardType="email-address"
-              autoCorrect={false}
-              style={styles.input}
-            />
+      <View style={styles.color}>
+      <View style={styles.container}>
+        <View style={styles.form}>
+          <TextInput
+            autoCorrect={false}
+            autoCapitalize='none'
+            placeholder="email"
+            placeholderTextColor="black"
+            returnKeyType="next"
+            onChangeText = {(text) => this.setState({email: text})}
+            value={this.state.email}
+            onSubmitEditing={() => this.passwordInput.focus()}
+            keyboardType="email-address"
+            autoCorrect={false}
+            style={styles.input}
+          />
 
-            <TextInput 
-              autoCorrect={false}
-              autoCapitalize='none'
-              placeholder="password"
-              placeholderTextColor="black"
-              onChangeText = {(text) => this.setState({password: text})}
-              value={this.state.password}
-              returnKeyType="go"
-              secureTextEntry
-              style={styles.input}
-              ref={(input) => this.passwordInput = input}
-            />
-          </View>
-
-          <View style={styles.login}>
-            <TouchableOpacity style={styles.loginButtonContainer} onPress={this._login}>
-              <Text style={styles.loginButtonText}>LOGIN</Text>
-            </TouchableOpacity>
-          </View> 
+          <TextInput 
+            autoCorrect={false}
+            autoCapitalize='none'
+            placeholder="password"
+            placeholderTextColor="black"
+            onChangeText = {(text) => this.setState({password: text})}
+            value={this.state.password}
+            returnKeyType="go"
+            secureTextEntry
+            style={styles.input}
+            ref={(input) => this.passwordInput = input}
+          />
         </View>
+
+        <View style={styles.login}>
+          <TouchableOpacity style={styles.loginButtonContainer} onPress={this._login}>
+            <Text style={styles.loginButtonText}>LOGIN</Text>
+          </TouchableOpacity>
+        </View> 
+      </View>
       </View>
     );
   }
@@ -89,11 +89,14 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
     padding: 20,
-    marginTop: 350,
+    marginTop: 220
   },
-  bkgcolor:{
-    backgroundColor: '#4DB6AC',
-    padding: 20
+  color: {
+    flex: 1,
+    backgroundColor: '#4DB6AC'
+  },
+  form: {
+
   },
   input: {
     height: 40,
@@ -114,13 +117,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#FFFFFF',
     fontWeight: '700'
-  },
-  registration: {
-    alignItems: 'center'
-  }, 
-  registerButtonContainer: {
-    marginTop: 15
-  },
+  }
   
 });
 
