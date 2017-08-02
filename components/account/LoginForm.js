@@ -44,7 +44,13 @@ export default class LoginForm extends Component {
 
   render() {
     return (
+<<<<<<< HEAD
       <View style={styles.container}>
+=======
+      <View style={styles.color}>
+      <View style={styles.container}>
+        <View style={styles.form}>
+>>>>>>> Style login and register page and position login button
           <TextInput
             autoCorrect={false}
             autoCapitalize='none'
@@ -59,7 +65,11 @@ export default class LoginForm extends Component {
             style={styles.input}
           />
 
+<<<<<<< HEAD
           <TextInput
+=======
+          <TextInput 
+>>>>>>> Style login and register page and position login button
             autoCorrect={false}
             autoCapitalize='none'
             placeholder="password"
@@ -71,13 +81,22 @@ export default class LoginForm extends Component {
             style={styles.input}
             ref={(input) => this.passwordInput = input}
           />
+<<<<<<< HEAD
+=======
+        </View>
+>>>>>>> Style login and register page and position login button
 
         <View style={styles.login}>
           <TouchableOpacity style={styles.loginButtonContainer} onPress={this._login}>
             <Text style={styles.loginButtonText}>LOGIN</Text>
           </TouchableOpacity>
         </View> 
+<<<<<<< HEAD
     </View>
+=======
+      </View>
+      </View>
+>>>>>>> Style login and register page and position login button
     );
   }
 }
@@ -87,7 +106,18 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
     padding: 20,
+<<<<<<< HEAD
     marginTop: 390,
+=======
+    marginTop: 220
+  },
+  color: {
+    flex: 1,
+    backgroundColor: '#4DB6AC'
+  },
+  form: {
+
+>>>>>>> Style login and register page and position login button
   },
   input: {
     height: 40,
@@ -106,12 +136,19 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#FFFFFF',
     fontWeight: '700'
+<<<<<<< HEAD
   },
   registration: {
     alignItems: 'center'
   },
   registerButtonContainer: {
     marginTop: 15
+=======
+  }
+  
+});
+
+>>>>>>> Style login and register page and position login button
 
   }
 });

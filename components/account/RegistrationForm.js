@@ -40,6 +40,7 @@ export default class RegistrationForm extends Component {
   render() {
 
     return (
+<<<<<<< HEAD
       <View style={styles.container}>
         
         <StatusBar 
@@ -59,6 +60,23 @@ export default class RegistrationForm extends Component {
             keyboardType="email-address"
             style={styles.input}
           />
+=======
+      <View style={styles.bkgColor}>
+        <View style={styles.container}>
+          <View style={styles.form}>
+            <TextInput
+              autoCorrect={false}
+              autoCapitalize='none'
+              placeholder="email"
+              placeholderTextColor="black"
+              ref={(input) => this.emailInput = input}
+              returnKeyType="next"
+              onSubmitEditing={() => this.passwordInput.focus()}
+              onChangeText = {(text) => this.setState({email: text})}
+              keyboardType="email-address"
+              style={styles.input}
+            />
+>>>>>>> Style login and register page and position login button
 
           <TextInput
             autoCorrect={false}
@@ -86,10 +104,22 @@ export default class RegistrationForm extends Component {
 
 
 const styles = StyleSheet.create({
+<<<<<<< HEAD
+=======
+  bkgColor: {
+    flex: 1,
+    backgroundColor: '#4DB6AC',
+    padding: 15
+
+  },
+>>>>>>> Style login and register page and position login button
   container: {
-    justifyContent: 'center',
     padding: 20,
+<<<<<<< HEAD
     marginTop: 390
+=======
+    marginTop: 180,
+>>>>>>> Style login and register page and position login button
   },
   input: {
     height: 40,
@@ -101,8 +131,17 @@ const styles = StyleSheet.create({
     padding: 10,
     height: 40,
     borderRadius: 20,
+<<<<<<< HEAD
     borderWidth: 2,
     overflow: 'hidden'
+=======
+    borderWidth: 1,
+    borderColor: 'white',
+    overflow: 'hidden',
+>>>>>>> Style login and register page and position login button
+  },
+  registration: {
+
   },
   loginButtonText: {
     textAlign: 'center',

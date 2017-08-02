@@ -14,6 +14,7 @@ import Recipe from './components/recipeList/Recipe'
 import List from './components/recipeList/List'
 import RecipeScreen from './components/recipeList/RecipeScreen'
 import Login from './components/account/Login'
+import LoginForm from './components/account/LoginForm'
 import Registration from './components/account/Registration'
 import RegistrationForm from './components/account/RegistrationForm'
 import RecipeList from './components/Screens/RecipeList';
@@ -41,9 +42,14 @@ const Scanner = StackNavigator({
     })
    }
 })
+<<<<<<< HEAD
 
 const Auth = TabNavigator({
+=======
+const SeeFood = StackNavigator({
+>>>>>>> Style login and register page and position login button
   Login: { screen: Login },
+  LoginForm: { screen: LoginForm },
   Register: { screen: RegistrationForm }
 })
 const Main = TabNavigator({
