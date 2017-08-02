@@ -20,6 +20,7 @@ export default class AppCamera extends Component {
     super();
     this.state = {
       photos: [],
+      items: ''
     }
   }
 
@@ -46,6 +47,14 @@ export default class AppCamera extends Component {
     .then(this.share)
   }
 
+  share = () => {
+    let image = this.state.photos[0].node.image.uri
+    RNFetchBlob.fs.readFile(image, 'base64')
+    .then((data) => {
+      this.callClarifaiBase(data)
+    })
+  }
+
   callClarifaiBase(base) {
     fetch("https://api.clarifai.com/v2/models/bd367be194cf45149e75f01d59f77ba7/outputs", {
       method: "POST",
@@ -66,16 +75,19 @@ export default class AppCamera extends Component {
     })
     .then((response) => response.json())
     .then((responseJson) => {
-       return console.log(responseJson);
+      let ingredients = ''
+       console.log(responseJson.outputs[0].data.concepts)
+       responseJson.outputs[0].data.concepts.forEach(function(ingredient) {
+         if (ingredient.value > 0.85) {
+           ingredients += ',' + ingredient.name
+         };
+         console.log(ingredients)
+       });
+       this.setState({ items: ingredients })
      })
-   }
-
-   share = () => {
-     let image = this.state.photos[0].node.image.uri
-     RNFetchBlob.fs.readFile(image, 'base64')
-     .then((data) => {
-       this.callClarifaiBase(data)
-     })
+     .done(
+       this.props.navigation.navigate("List", {name: this.state.items})
+     )
    }
 
   render() {
