@@ -11,7 +11,7 @@ export default class RecipeScreen extends Component {
 
   render() {
     return(
-      <Text>this is the test screen for an individual recipe</Text>
+      <Text>{this.props.navigation.state.params.instructions}</Text>
     )
   }
 }
