@@ -42,7 +42,7 @@ export default class Login extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#4DB6AC',
+    backgroundColor: '#c0392b',
     padding: 20,
   },
   logo: {
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
   },
   img: {
     flex: 1,
-    backgroundColor: '#4DB6AC',
+    backgroundColor: '#c0392b',
     padding: 20,
     alignItems: 'stretch'
   },

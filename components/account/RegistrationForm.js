@@ -59,7 +59,7 @@ export default class RegistrationForm extends Component {
               />
               <TextInput
                 autoCorrect={false}
-                autoCapitalize='none' 
+                autoCapitalize='none'
                 placeholder="password"
                 placeholderTextColor="black"
                 returnKeyType="join"
@@ -86,7 +86,7 @@ export default class RegistrationForm extends Component {
 const styles = StyleSheet.create({
   bkgColor: {
     flex: 1,
-    backgroundColor: '#4DB6AC',
+    backgroundColor: '#c0392b',
     padding: 15
   },
   container: {

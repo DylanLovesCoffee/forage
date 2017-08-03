@@ -15,7 +15,9 @@ export default class RecipeScreen extends Component {
       let instructionsArray = instructionsString.split('. ')
     return(
       <ScrollView>
-        {instructionsArray.map((line) => return(<Text>{line}</Text>))}
+        {instructionsArray.map(function(line) {
+          return(<Text>{line + '. \n'}</Text>)
+        })}
       </ScrollView>
     )
   }

@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
   },
   color: {
     flex: 1,
-    backgroundColor: '#4DB6AC'
+    backgroundColor: '#c0392b'
   },
   form: {
   },

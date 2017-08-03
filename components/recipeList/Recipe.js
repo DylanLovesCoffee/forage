@@ -13,10 +13,12 @@ export default class Recipe extends Component {
 
     let {title, navigate, instructions} = this.props
     return(
-      <Button
-        onPress={() => navigate('Recipe', { title: title, instructions: instructions })}
-        title={title} instructions={instructions}
-      />
+      <View>
+        <Button
+          onPress={() => navigate('Recipe', { title: title, instructions: instructions })}
+          title={title} instructions={instructions}
+        />
+      </View>
     )
   }
 }
