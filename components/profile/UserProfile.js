@@ -49,7 +49,6 @@ export default class UserProfile extends Component {
         dataSource={this.state.recipeList}
         renderRow={(rowData) => <View style={styles.text}><Text style={styles.dataText}>{rowData}</Text></View>}
         />
-        <Clarifai navigation={navigation}/>
       </View>
     );
   }
@@ -59,21 +58,27 @@ const styles = StyleSheet.create({
   container: {
     padding:10,
     flex:1,
-    backgroundColor: '#B3E5FC'
+    backgroundColor: '#c0392b'
   },
   username: {
     textAlign: 'center',
     fontWeight: 'bold',
     fontSize: 40,
     fontFamily: 'Cochin',
-    fontStyle: 'italic'
   },
   dataText: {
     textAlign: 'center',
     fontSize: 20,
     fontFamily: 'Cochin',
-    color: '#A1887F',
+    color: 'white',
     fontWeight: 'bold',
+    backgroundColor: '#34495e',
+    padding: 10,
+    height: 40,
+    borderRadius: 20,
+    borderWidth: 1,
+    borderColor: 'white',
+    overflow: 'hidden',
   },
   text: {
     marginTop: 40
