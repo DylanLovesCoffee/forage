@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#4DB6AC',
-    padding: 20
+    padding: 20,
   },
   logo: {
     height: 50,
@@ -55,6 +55,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#4DB6AC',
     padding: 20,
+    alignItems: 'stretch'
   },
   form: {
     flex: 1,

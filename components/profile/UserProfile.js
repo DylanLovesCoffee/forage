@@ -6,7 +6,8 @@ import {
   Button,
   ListView,
   TextInput,
-  TouchableOpacity
+  TouchableOpacity,
+  Image
 } from 'react-native';
 import AppCamera from '../camera/AppCamera';
 import Clarifai from '../utilities/Clarifai'
@@ -19,7 +20,7 @@ export default class UserProfile extends Component {
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
       userFirstName: "Dylan",
-      recipeList: ds.cloneWithRows(['Recipe1', 'Recipe2', 'Recipe3']),
+      recipeList: ds.cloneWithRows(['Lasagna Roll Ups', "Spaghetti all'Amatriciana", 'Baked Ziti', 'Best Tuna Casserole']),
       search: ''
     };
     this.search = this.search.bind(this)
@@ -41,10 +42,12 @@ export default class UserProfile extends Component {
     let { navigation } = this.props
     return (
       <View style={styles.container}>
-        <Text>Hello, {this.state.userFirstName}</Text>
+        <View style={styles.name}>
+          <Text style={styles.username}>Hello, {this.state.userFirstName}</Text>
+        </View>
         <ListView
         dataSource={this.state.recipeList}
-        renderRow={(rowData) => <Text>{rowData}</Text>}
+        renderRow={(rowData) => <View style={styles.text}><Text style={styles.dataText}>{rowData}</Text></View>}
         />
         <Clarifai navigation={navigation}/>
       </View>
@@ -56,5 +59,23 @@ const styles = StyleSheet.create({
   container: {
     padding:10,
     flex:1,
+    backgroundColor: '#B3E5FC'
+  },
+  username: {
+    textAlign: 'center',
+    fontWeight: 'bold',
+    fontSize: 40,
+    fontFamily: 'Cochin',
+    fontStyle: 'italic'
+  },
+  dataText: {
+    textAlign: 'center',
+    fontSize: 20,
+    fontFamily: 'Cochin',
+    color: '#A1887F',
+    fontWeight: 'bold',
+  },
+  text: {
+    marginTop: 40
   }
 })

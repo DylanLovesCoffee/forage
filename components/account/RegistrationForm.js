@@ -7,7 +7,8 @@ import {
   View,
   TouchableOpacity,
   StatusBar,
-  Image
+  Image,
+  KeyboardAvoidingView
 } from 'react-native';
 import {firebaseRef} from '../services/Firebase'
 import { Actions } from 'react-native-router-flux'
@@ -41,39 +42,41 @@ export default class RegistrationForm extends Component {
   render() {
     return (
       <View style={styles.bkgColor}>
-        <View style={styles.container}>
-          <View style={styles.form}>
-            <TextInput
-              autoCorrect={false}
-              autoCapitalize='none'
-              placeholder="email"
-              placeholderTextColor="black"
-              ref={(input) => this.emailInput = input}
-              returnKeyType="next"
-              onSubmitEditing={() => this.passwordInput.focus()}
-              onChangeText = {(text) => this.setState({email: text})}
-              keyboardType="email-address"
-              style={styles.input}
-            />
-            <TextInput
-              autoCorrect={false}
-              autoCapitalize='none'
-              placeholder="password"
-              placeholderTextColor="black"
-              returnKeyType="join"
-              secureTextEntry
-              style={styles.input}
-              onChangeText = {(text) => this.setState({password: text})}
-              ref={(input) => this.passwordInput = input}
-            />
-          </View>
+        <KeyboardAvoidingView behavior="padding">
+          <View style={styles.container}>
+            <View style={styles.form}>
+              <TextInput
+                autoCorrect={false}
+                autoCapitalize='none'
+                placeholder="email"
+                placeholderTextColor="black"
+                ref={(input) => this.emailInput = input}
+                returnKeyType="next"
+                onSubmitEditing={() => this.passwordInput.focus()}
+                onChangeText = {(text) => this.setState({email: text})}
+                keyboardType="email-address"
+                style={styles.input}
+              />
+              <TextInput
+                autoCorrect={false}
+                autoCapitalize='none' 
+                placeholder="password"
+                placeholderTextColor="black"
+                returnKeyType="join"
+                secureTextEntry
+                style={styles.input}
+                onChangeText = {(text) => this.setState({password: text})}
+                ref={(input) => this.passwordInput = input}
+              />
+            </View>
 
-          <View style={styles.registration}>
-            <TouchableOpacity style={styles.registerButtonContainer} onPress={this._register}>
-              <Text style={styles.registerButtonText}>Create Account</Text>
-            </TouchableOpacity>
+            <View style={styles.registration}>
+              <TouchableOpacity style={styles.registerButtonContainer} onPress={this._register}>
+                <Text style={styles.registerButtonText}>create account</Text>
+              </TouchableOpacity>
+            </View>
           </View>
-        </View>
+        </KeyboardAvoidingView>
       </View>
     );
   }
