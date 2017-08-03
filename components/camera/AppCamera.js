@@ -13,7 +13,6 @@ import Camera from 'react-native-camera';
 import Share from 'react-native-share';
 import RNFetchBlob from 'react-native-fetch-blob';
 import { API_KEY } from 'react-native-dotenv';
-// import { Icon, Button } from 'native-base';
 
 export default class AppCamera extends Component {
   constructor(){
@@ -25,7 +24,8 @@ export default class AppCamera extends Component {
   }
 
   static navigationOptions = {
-    title: "Scan Your Groceries"
+    title: "Camera",
+    icon: () => <Icon name="ios-aperature-outline" size={32} />
   };
 
   takePicture() {

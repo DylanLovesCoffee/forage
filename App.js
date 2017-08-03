@@ -20,6 +20,7 @@ import RegistrationForm from './components/account/RegistrationForm'
 import RecipeList from './components/Screens/RecipeList';
 import AppCamera from './components/camera/AppCamera';
 import UserProfile from './components/profile/UserProfile'
+import { Icon } from 'native-base';
 
 const Left = StackNavigator({
   Home: { screen: UserProfile },
@@ -49,7 +50,13 @@ const Auth = StackNavigator({
 })
 const Main = TabNavigator({
   Profile: { screen: Left },
-  Camera: { screen: Scanner }
+  Camera: { screen: Scanner },
+}, {
+  tabBarOptions: {
+    activeTintColor: "red",
+    labelStyle: { fontSize: 12 },
+    tabStyle: { width: 100 },
+  }
 })
 const SeeFood = StackNavigator({
   Home: { screen: Auth },
