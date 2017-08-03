@@ -35,7 +35,7 @@ export default class RegistrationForm extends Component {
       console.log(errorCode)
       console.log(errorMessage)
     });
-    
+
   }
 
   render() {
@@ -57,7 +57,7 @@ export default class RegistrationForm extends Component {
             />
             <TextInput
               autoCorrect={false}
-              autoCapitalize='none' 
+              autoCapitalize='none'
               placeholder="password"
               placeholderTextColor="black"
               returnKeyType="join"
@@ -70,7 +70,7 @@ export default class RegistrationForm extends Component {
 
           <View style={styles.registration}>
             <TouchableOpacity style={styles.registerButtonContainer} onPress={this._register}>
-              <Text style={styles.registerButtonText}>create account</Text>
+              <Text style={styles.registerButtonText}>Create Account</Text>
             </TouchableOpacity>
           </View>
         </View>

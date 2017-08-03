@@ -13,7 +13,6 @@ import Camera from 'react-native-camera';
 import Share from 'react-native-share';
 import RNFetchBlob from 'react-native-fetch-blob';
 import { API_KEY } from 'react-native-dotenv';
-// import { Icon, Button } from 'native-base';
 
 export default class AppCamera extends Component {
   constructor(){
@@ -25,7 +24,8 @@ export default class AppCamera extends Component {
   }
 
   static navigationOptions = {
-    title: "Scan Your Groceries"
+    title: "Camera",
+    icon: () => <Icon name="ios-aperature-outline" size={32} />
   };
 
   takePicture() {
@@ -56,6 +56,8 @@ export default class AppCamera extends Component {
   }
 
   callClarifaiBase(base) {
+    let helpMe = this
+
     fetch("https://api.clarifai.com/v2/models/bd367be194cf45149e75f01d59f77ba7/outputs", {
       method: "POST",
       headers: {
@@ -78,16 +80,17 @@ export default class AppCamera extends Component {
       let ingredients = ''
        console.log(responseJson.outputs[0].data.concepts)
        responseJson.outputs[0].data.concepts.forEach(function(ingredient) {
-         if (ingredient.value > 0.85) {
+         if (ingredient.value > 0.80) {
            ingredients += ',' + ingredient.name
          };
          console.log(ingredients)
        });
        this.setState({ items: ingredients })
+       setTimeout(
+         () => { helpMe.props.navigation.navigate("List", {name: this.state.items}) },
+         2000
+       )
      })
-     .done(
-       this.props.navigation.navigate("List", {name: this.state.items})
-     )
    }
 
   render() {
