@@ -20,16 +20,18 @@ export default class Login extends Component {
     return (
       <View style={styles.container}>
 
-        <View style={styles.img}>  
+        <View style={styles.img}>
           <Image source={require('../img/OmakaseWhite.png')}style={styles.logo}/>
         </View>
 
         <View style={styles.account}>
           <TouchableOpacity style={styles.loginButton} onPress={() => navigate('LoginForm')}>
-           <Text style={styles.loginText}>Sign in</Text>
+           <Text style={styles.loginText}>Sign In</Text>
           </TouchableOpacity>
+        </View>
+        <View style={styles.registerButton}>
           <TouchableOpacity style={styles.registerButton} onPress={() => navigate('Register')}>
-           <Text style={styles.registerText}>Create account</Text>
+           <Text style={styles.registerText}>🌭 Create Account</Text>
           </TouchableOpacity>
         </View>
 
@@ -44,9 +46,9 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   logo: {
-    height: 50, 
+    height: 50,
     width: 250,
-    marginTop: 230,
+    marginTop: 100,
     marginLeft: 30
   },
   img: {
@@ -70,10 +72,10 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   registerButton: {
-
+    marginBottom: 0,
   },
   account: {
-    marginBottom: 90
+    marginBottom: 100
   },
   loginText: {
     textAlign: 'center',

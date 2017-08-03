@@ -36,7 +36,7 @@ export default class RegistrationForm extends Component {
       console.log(errorCode)
       console.log(errorMessage)
     });
-    
+
   }
 
   render() {
