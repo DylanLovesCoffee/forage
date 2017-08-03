@@ -88,7 +88,7 @@ export default class AppCamera extends Component {
        this.setState({ items: ingredients })
        setTimeout(
          () => { helpMe.props.navigation.navigate("List", {name: this.state.items}) },
-         1000
+         2000
        )
      })
    }
