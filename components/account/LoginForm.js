@@ -49,40 +49,42 @@ export default class LoginForm extends Component {
   render() {
   return (
     <View style={styles.color}>
-      <View style={styles.container}>
-        <View style={styles.form}>
-          <TextInput
-            autoCorrect={false}
-            autoCapitalize='none'
-            placeholder="email"
-            placeholderTextColor="black"
-            returnKeyType="next"
-            onChangeText = {(text) => this.setState({email: text})}
-            value={this.state.email}
-            onSubmitEditing={() => this.passwordInput.focus()}
-            keyboardType="email-address"
-            autoCorrect={false}
-            style={styles.input}
-          />
-          <TextInput
-            autoCorrect={false}
-            autoCapitalize='none'
-            placeholder="password"
-            placeholderTextColor="black"
-            onChangeText = {(text) => this.setState({password: text})}
-            value={this.state.password}
-            returnKeyType="go"
-            secureTextEntry
-            style={styles.input}
-            ref={(input) => this.passwordInput = input}
-          />
+      <KeyboardAvoidingView behavior="padding">
+        <View style={styles.container}>
+          <View style={styles.form}>
+            <TextInput
+              autoCorrect={false}
+              autoCapitalize='none'
+              placeholder="email"
+              placeholderTextColor="black"
+              returnKeyType="next"
+              onChangeText = {(text) => this.setState({email: text})}
+              value={this.state.email}
+              onSubmitEditing={() => this.passwordInput.focus()}
+              keyboardType="email-address"
+              autoCorrect={false}
+              style={styles.input}
+            />
+            <TextInput
+              autoCorrect={false}
+              autoCapitalize='none'
+              placeholder="password"
+              placeholderTextColor="black"
+              onChangeText = {(text) => this.setState({password: text})}
+              value={this.state.password}
+              returnKeyType="go"
+              secureTextEntry
+              style={styles.input}
+              ref={(input) => this.passwordInput = input}
+            />
+          </View>
+          <View style={styles.login}>
+            <TouchableOpacity style={styles.loginButtonContainer} onPress={this._login.bind(this)}>
+              <Text style={styles.loginButtonText}>LOGIN</Text>
+            </TouchableOpacity>
+          </View>
         </View>
-        <View style={styles.login}>
-          <TouchableOpacity style={styles.loginButtonContainer} onPress={this._login.bind(this)}>
-            <Text style={styles.loginButtonText}>LOGIN</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
+      </KeyboardAvoidingView>
     </View>
     );
   }
@@ -93,7 +95,7 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
     padding: 20,
-    marginTop: 220
+    marginTop: 180
   },
   color: {
     flex: 1,
