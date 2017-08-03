@@ -26,10 +26,9 @@ export default class RecipeList extends Component {
     title: 'Recipes',
   }
 
-
   componentDidMount() {
     var str = this.props.navigation.state.params.name
-    var url = "https://protected-mesa-93226.herokuapp.com/results?food="
+    var url = "http://localhost:3000/results?food="
     var key = "&api_key=" + RFN_KEY
     axios.get(url + str + key)
     .then((response) => {

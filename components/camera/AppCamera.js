@@ -80,7 +80,7 @@ export default class AppCamera extends Component {
       let ingredients = ''
        console.log(responseJson.outputs[0].data.concepts)
        responseJson.outputs[0].data.concepts.forEach(function(ingredient) {
-         if (ingredient.value > 0.85) {
+         if (ingredient.value > 0.80) {
            ingredients += ',' + ingredient.name
          };
          console.log(ingredients)
@@ -88,7 +88,7 @@ export default class AppCamera extends Component {
        this.setState({ items: ingredients })
        setTimeout(
          () => { helpMe.props.navigation.navigate("List", {name: this.state.items}) },
-         2000
+         1000
        )
      })
    }
