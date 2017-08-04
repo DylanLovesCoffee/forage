@@ -12,6 +12,7 @@ export default class RecipeScreen extends Component {
 
   render() {
       let instructionsString = this.props.navigation.state.params.instructions.replace(/\s+/g,' ').trim();
+      console.error = (error) => error.apply;
       let instructionsArray = instructionsString.split('. ')
     return(
       <ScrollView>

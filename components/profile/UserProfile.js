@@ -27,7 +27,7 @@ export default class UserProfile extends Component {
   }
 
   static navigationOptions = {
-    title: "Profile"
+    title: "Home"
   };
 
   _onPress = () => {
@@ -70,7 +70,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontWeight: 'bold',
     fontSize: 40,
-    fontFamily: 'Cochin',
   },
   dataText: {
     textAlign: 'center',
