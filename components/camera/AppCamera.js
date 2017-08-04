@@ -13,6 +13,7 @@ import Camera from 'react-native-camera';
 import Share from 'react-native-share';
 import RNFetchBlob from 'react-native-fetch-blob';
 import { API_KEY } from 'react-native-dotenv';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 export default class AppCamera extends Component {
   constructor(){
@@ -25,7 +26,6 @@ export default class AppCamera extends Component {
 
   static navigationOptions = {
     title: "Camera",
-    icon: () => <Icon name="ios-aperature-outline" size={32} />
   };
 
   takePicture() {
@@ -103,7 +103,7 @@ export default class AppCamera extends Component {
           style={styles.preview}
           aspect={Camera.constants.Aspect.fill}>
           <TouchableHighlight>
-              <Text style={styles.capture}  onPress={this.takePicture.bind(this)}>[SCAN]</Text>
+              <Text style={styles.capture}  onPress={this.takePicture.bind(this)}><Icon name="camera" size={50}/></Text>
           </TouchableHighlight>
         </Camera>
       </View>
