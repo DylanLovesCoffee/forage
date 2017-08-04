@@ -45,9 +45,15 @@ export default class UserProfile extends Component {
         <View style={styles.name}>
           <Text style={styles.username}>Hello, {this.state.userFirstName}</Text>
         </View>
+        <View style={styles.favorites}>
+          <Text style={styles.favText}>Favorites</Text>
+        </View>
         <ListView
         dataSource={this.state.recipeList}
-        renderRow={(rowData) => <View style={styles.text}><Text style={styles.dataText}>{rowData}</Text></View>}
+        renderRow={(rowData) =>
+          <View style={styles.text}>
+            <Text style={styles.dataText}>{rowData}</Text>
+          </View>}
         />
       </View>
     );
@@ -69,9 +75,7 @@ const styles = StyleSheet.create({
   dataText: {
     textAlign: 'center',
     fontSize: 20,
-    fontFamily: 'Cochin',
     color: 'white',
-    fontWeight: 'bold',
     backgroundColor: '#34495e',
     padding: 10,
     height: 40,
@@ -82,5 +86,13 @@ const styles = StyleSheet.create({
   },
   text: {
     marginTop: 40
+  },
+  favorites: {
+    padding: 10,
+  },
+  favText: {
+    color: 'white',
+    textAlign: 'center',
+    fontSize: 30,
   }
 })

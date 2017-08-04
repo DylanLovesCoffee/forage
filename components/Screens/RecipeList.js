@@ -15,9 +15,7 @@ export default class RecipeList extends Component {
     super();
     this.state = {
       data : [
-        {title: 'Boom pizza'},
-        {title: 'Malai Kofta'},
-        {title: 'Lame Salad'}
+        {title: 'Loading... 🍔'},
       ]
     }
   }
