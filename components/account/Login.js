@@ -12,9 +12,6 @@ import {
 } from 'react-native';
 
 export default class Login extends Component {
-  static navigationOptions = {
-    title: 'Home'
-  }
   render() {
     const { navigate } = this.props.navigation;
     return (
