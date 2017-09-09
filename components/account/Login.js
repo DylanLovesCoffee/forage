@@ -17,18 +17,18 @@ export default class Login extends Component {
     return (
       <View style={styles.container}>
 
-        <View style={styles.img}>
-          <Image source={require('../img/OmakaseWhite.png')} style={styles.logo}/>
+        <View style={styles.logoContainer}>
+          <Image source={require('../img/forage-logo.png')} style={styles.logo}/>
         </View>
 
-        <View style={styles.account}>
+        <View style={styles.loginContainer}>
           <TouchableOpacity style={styles.loginButton} onPress={() => navigate('LoginForm')}>
-           <Text style={styles.loginText}>Sign In</Text>
+           <Text style={styles.loginText}>LOGIN</Text>
           </TouchableOpacity>
         </View>
-        <View style={styles.registerButton}>
-          <TouchableOpacity style={styles.registerButton} onPress={() => navigate('Register')}>
-           <Text style={styles.registerText}>🌭 Create Account</Text>
+        <View style={styles.signupContainer}>
+          <TouchableOpacity onPress={() => navigate('Register')}>
+           <Text style={styles.signupText}>SIGNUP</Text>
           </TouchableOpacity>
         </View>
 
@@ -39,48 +39,37 @@ export default class Login extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#c0392b',
+    backgroundColor: '#000000',
     padding: 20,
   },
   logo: {
-    height: 50,
-    width: 250,
     marginTop: 100,
-    marginLeft: 30
+    marginLeft: 65,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
-  img: {
+  logoContainer: {
     flex: 1,
-    backgroundColor: '#c0392b',
-    padding: 20,
     alignItems: 'stretch'
   },
   form: {
     flex: 1,
-    backgroundColor: '#ffffff',
     padding: 20
   },
-  loginButton: {
-    backgroundColor: '#34495e',
-    padding: 10,
-    height: 40,
-    borderRadius: 20,
-    borderWidth: 1,
-    borderColor: 'white',
-    overflow: 'hidden',
+  signupContainer: {
+    marginBottom: 70,
   },
-  registerButton: {
-    marginBottom: 0,
-  },
-  account: {
+  loginContainer: {
     marginBottom: 100
   },
   loginText: {
     textAlign: 'center',
-    color: '#FFFFFF',
+    color: '#434343',
     fontWeight: '700'
   },
-  registerText: {
+  signupText: {
     textAlign: 'center',
-    fontWeight: '300'
+    fontWeight: '700',
+    color: '#434343',
   }
 });
