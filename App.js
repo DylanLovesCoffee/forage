@@ -13,8 +13,8 @@ import axios from 'axios';
 import Recipe from './components/recipeList/Recipe'
 import List from './components/recipeList/List'
 import RecipeScreen from './components/recipeList/RecipeScreen'
+import LandingPage from './components/account/LandingPage'
 import Login from './components/account/Login'
-import LoginForm from './components/account/LoginForm'
 import Registration from './components/account/Registration'
 import RegistrationForm from './components/account/RegistrationForm'
 import RecipeList from './components/Screens/RecipeList';
@@ -31,7 +31,7 @@ const Left = StackNavigator({
       title: `${navigation.state.params.title}`,
     }),
    }
-},)
+})
 
 const Scanner = StackNavigator({
   Cam: { screen: AppCamera },
@@ -41,11 +41,17 @@ const Scanner = StackNavigator({
     navigationOptions: ({navigation}) => ({
       title: `${navigation.state.params.title}`,
     })
-   }
+  }
 })
-const Auth = StackNavigator({
-  Login: { screen: Login },
-  LoginForm: { screen: LoginForm },
+
+const SignIn = StackNavigator({
+  LandingPage: { screen: LandingPage },
+  Login: {
+    screen: Login,
+    navigationOptions: ({navigation}) => ({
+      title: "Login"
+    })
+  },
   Register: { screen: RegistrationForm },
 })
 const Main = TabNavigator({
@@ -59,7 +65,7 @@ const Main = TabNavigator({
   }
 })
 const SeeFood = StackNavigator({
-  Home: { screen: Auth },
+  Home: { screen: SignIn },
   Main: { screen: Main }
 },
 { headerMode: 'none' })
