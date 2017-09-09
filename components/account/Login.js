@@ -16,22 +16,19 @@ export default class Login extends Component {
     const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
-
         <View style={styles.logoContainer}>
           <Image source={require('../img/forage-logo.png')} style={styles.logo}/>
         </View>
-
         <View style={styles.loginContainer}>
           <TouchableOpacity style={styles.loginButton} onPress={() => navigate('LoginForm')}>
-           <Text style={styles.loginText}>LOGIN</Text>
+            <Text style={styles.loginText}>LOGIN</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.signupContainer}>
-          <TouchableOpacity onPress={() => navigate('Register')}>
-           <Text style={styles.signupText}>SIGNUP</Text>
+          <TouchableOpacity style={styles.signupButton} onPress={() => navigate('Register')}>
+            <Text style={styles.signupText}>SIGNUP</Text>
           </TouchableOpacity>
         </View>
-
       </View>
     );
   }
@@ -52,15 +49,11 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'stretch'
   },
-  form: {
-    flex: 1,
-    padding: 20
-  },
   signupContainer: {
     marginBottom: 70,
   },
   loginContainer: {
-    marginBottom: 100
+    marginBottom: 80
   },
   loginText: {
     textAlign: 'center',
@@ -71,5 +64,17 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontWeight: '700',
     color: '#434343',
+  },
+  loginButton: {
+    borderWidth: .5,
+    paddingTop: 10,
+    paddingBottom: 10,
+    borderColor: '#434343',
+  },
+  signupButton: {
+    borderWidth: .5,
+    paddingTop: 10,
+    paddingBottom: 10,
+    borderColor: '#434343',
   }
 });
