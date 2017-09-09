@@ -10,7 +10,7 @@ import {
   Image,
   KeyboardAvoidingView
 } from 'react-native';
-import RegistrationForm from './RegistrationForm';
+import Signup from './Signup';
 import * as firebase from 'firebase';
 import { Actions } from 'react-native-router-flux'
 import _ from 'lodash'

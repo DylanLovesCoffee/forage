@@ -25,7 +25,7 @@ export default class LandingPage extends Component {
           </TouchableOpacity>
         </View>
         <View style={styles.signupContainer}>
-          <TouchableOpacity style={styles.signupButton} onPress={() => navigate('Register')}>
+          <TouchableOpacity style={styles.signupButton} onPress={() => navigate('Signup')}>
             <Text style={styles.signupText}>CREATE ACCOUNT</Text>
           </TouchableOpacity>
         </View>

@@ -10,11 +10,11 @@ import {
   Image,
   KeyboardAvoidingView
 } from 'react-native';
-import {firebaseRef} from '../services/Firebase'
+import * as firebase from 'firebase';
 import { Actions } from 'react-native-router-flux'
 import _ from 'lodash'
 
-export default class RegistrationForm extends Component {
+export default class Signup extends Component {
 
   constructor(props) {
     super(props)
@@ -28,15 +28,10 @@ export default class RegistrationForm extends Component {
   }
 
   _register() {
-
-    firebaseRef.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).catch(function(error) {
-      var errorCode = error.code;
-      var errorMessage = error.message;
-
-      console.log(errorCode)
-      console.log(errorMessage)
+    firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).catch(function(error) {
+      console.log(error.code)
+      console.log(error.message)
     });
-
   }
 
   render() {
@@ -86,7 +81,7 @@ export default class RegistrationForm extends Component {
 const styles = StyleSheet.create({
   bkgColor: {
     flex: 1,
-    backgroundColor: '#c0392b',
+    backgroundColor: '#000000',
     padding: 15
   },
   container: {
