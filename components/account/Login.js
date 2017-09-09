@@ -41,6 +41,7 @@ export default class Login extends Component {
   render() {
     return (
       <View style={styles.background}>
+        <StatusBar barStyle="default"" />
         <KeyboardAvoidingView behavior="padding">
           <View style={styles.formContainer}>
             <TextInput

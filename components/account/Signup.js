@@ -37,6 +37,7 @@ export default class Signup extends Component {
   render() {
     return (
       <View style={styles.bkgColor}>
+        <StatusBar barStyle="default"/>
         <KeyboardAvoidingView behavior="padding">
           <View style={styles.container}>
             <View style={styles.form}>
