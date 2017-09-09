@@ -43,16 +43,27 @@ const Scanner = StackNavigator({
   }
 })
 
-const SignIn = StackNavigator({
-  LandingPage: { screen: LandingPage },
+const SignInSignUp = StackNavigator({
+  LandingPage: {
+    screen: LandingPage,
+    navigationOptions: ({navigation}) => ({
+      header: null,
+    })
+  },
   Login: {
     screen: Login,
     navigationOptions: ({navigation}) => ({
-      title: "Login"
+      title: "Login",
     })
   },
-  Signup: { screen: Signup },
+  Signup: {
+    screen: Signup,
+    navigationOptions: ({navigation}) => ({
+      title: "Create Account"
+    })
+  },
 })
+
 const Main = TabNavigator({
   Profile: { screen: Left },
   Camera: { screen: Scanner },
@@ -63,8 +74,9 @@ const Main = TabNavigator({
     tabStyle: { width: 100 },
   }
 })
+
 const SeeFood = StackNavigator({
-  Home: { screen: SignIn },
+  Home: { screen: SignInSignUp },
   Main: { screen: Main }
 },
 { headerMode: 'none' })

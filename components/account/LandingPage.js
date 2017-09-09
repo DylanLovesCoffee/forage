@@ -8,7 +8,8 @@ import {
   TouchableOpacity,
   Image,
   KeyboardAvoidingView,
-  Button
+  Button,
+  StatusBar
 } from 'react-native';
 
 export default class LandingPage extends Component {
@@ -16,6 +17,7 @@ export default class LandingPage extends Component {
     const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
+        <StatusBar barStyle="light-content"/>
         <View style={styles.logoContainer}>
           <Image source={require('../img/forage-logo.png')} style={styles.logo}/>
         </View>
@@ -33,6 +35,7 @@ export default class LandingPage extends Component {
     );
   }
 }
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -40,7 +43,7 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   logo: {
-    marginTop: 100,
+    marginTop: 160,
     marginLeft: 65,
     justifyContent: 'center',
     alignItems: 'center'
