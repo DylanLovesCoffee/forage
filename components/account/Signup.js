@@ -7,39 +7,49 @@ import {
   View,
   TouchableOpacity,
   StatusBar,
-  KeyboardAvoidingView
+  Image,
+  KeyboardAvoidingView,
+  Alert
 } from 'react-native';
-import Signup from './Signup';
 import firebase from '../services/Firebase';
-import { Actions } from 'react-native-router-flux';
-import _ from 'lodash';
-import App from '../../App';
+import { Actions } from 'react-native-router-flux'
+import _ from 'lodash'
 
-export default class Login extends Component {
+export default class Signup extends Component {
+
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
       email: '',
-      password: ''
-    };
-    this._login = this._login.bind(this);
+      password: '',
+      confirmPassword: ''
+    }
+    this._register = this._register.bind(this)
   }
 
-  _login() {
-    firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
-    .then(function(user){
-      this.props.navigation.navigate('Profile')
-    }.bind(this)).catch(function(error) {
-      console.log(error.code)
-      console.log(error.message)
-    });
+  validateForm() {
+    return (
+      this.state.email.length > 0 &&
+      this.state.password.length > 0 &&
+      this.state.confirmPassword.length > 0 &&
+      this.state.password === this.state.confirmPassword
+    );
+  }
+
+  _register() {
+    firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
+    .catch(function(error) {
+      console.log(error.code);
+      console.log(error.message);
+    })
+    .then(Alert.alert("Your account has been created."))
   }
 
   render() {
     return (
       <View style={styles.background}>
-        <StatusBar barStyle="default" />
+        <StatusBar barStyle="default"/>
         <KeyboardAvoidingView behavior="padding">
           <View style={styles.formContainer}>
             <TextInput
@@ -47,12 +57,11 @@ export default class Login extends Component {
               autoCapitalize='none'
               placeholder="email"
               placeholderTextColor="#434343"
+              ref={(input) => this.emailInput = input}
               returnKeyType="next"
-              onChangeText = {(text) => this.setState({email: text})}
-              value={this.state.email}
               onSubmitEditing={() => this.passwordInput.focus()}
+              onChangeText = {(text) => this.setState({email: text})}
               keyboardType="email-address"
-              autoCorrect={false}
               style={styles.userInput}
             />
             <TextInput
@@ -60,16 +69,30 @@ export default class Login extends Component {
               autoCapitalize='none'
               placeholder="password"
               placeholderTextColor="#434343"
-              onChangeText = {(text) => this.setState({password: text})}
-              value={this.state.password}
-              returnKeyType="go"
+              returnKeyType="join"
               secureTextEntry
               style={styles.userInput}
+              onChangeText = {(text) => this.setState({password: text})}
+              ref={(input) => this.passwordInput = input}
+            />
+            <TextInput
+              autoCorrect={false}
+              autoCapitalize='none'
+              placeholder="confirm password"
+              placeholderTextColor="#434343"
+              returnKeyType="join"
+              secureTextEntry
+              style={styles.userInput}
+              onChangeText = {(text) => this.setState({confirmPassword: text})}
               ref={(input) => this.passwordInput = input}
             />
             <View>
-              <TouchableOpacity style={styles.loginButton} onPress={this._login}>
-                <Text style={styles.loginButtonText}>LOGIN</Text>
+              <TouchableOpacity
+                style={styles.signupButton}
+                disabled={!this.validateForm()}
+                onPress={this._register}
+              >
+                <Text style={styles.signupButtonText}>CREATE ACCOUNT</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -79,15 +102,15 @@ export default class Login extends Component {
   }
 }
 
+
 const styles = StyleSheet.create({
   background: {
     flex: 1,
-    backgroundColor: '#000000'
+    backgroundColor: '#000000',
   },
   formContainer: {
-    justifyContent: 'center',
     padding: 20,
-    marginTop: 180
+    marginTop: 180,
   },
   userInput: {
     height: 40,
@@ -96,7 +119,7 @@ const styles = StyleSheet.create({
     borderColor: '#434343',
     color: 'white',
   },
-  loginButton: {
+  signupButton: {
     backgroundColor: '#434343',
     paddingTop: 10,
     paddingBottom: 10,
@@ -104,9 +127,9 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     overflow: 'hidden'
   },
-  loginButtonText: {
+  signupButtonText: {
     textAlign: 'center',
     color: '#FFFFFF',
     fontWeight: '700'
-  },
+  }
 });
