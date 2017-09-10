@@ -10,7 +10,7 @@ import {
   Image,
   KeyboardAvoidingView
 } from 'react-native';
-import * as firebase from 'firebase';
+import firebase from '../services/Firebase';
 import { Actions } from 'react-native-router-flux'
 import _ from 'lodash'
 
@@ -21,10 +21,19 @@ export default class Signup extends Component {
 
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      confirmPassword: ''
     }
-
     this._register = this._register.bind(this)
+  }
+
+  validateForm() {
+    return (
+      this.state.email.length > 0 &&
+      this.state.password.length > 0 &&
+      this.state.confirmPassword.length > 0 &&
+      this.state.password === this.state.confirmPassword
+    );
   }
 
   _register() {
@@ -36,39 +45,51 @@ export default class Signup extends Component {
 
   render() {
     return (
-      <View style={styles.bkgColor}>
+      <View style={styles.background}>
         <StatusBar barStyle="default"/>
         <KeyboardAvoidingView behavior="padding">
-          <View style={styles.container}>
-            <View style={styles.form}>
-              <TextInput
-                autoCorrect={false}
-                autoCapitalize='none'
-                placeholder="email"
-                placeholderTextColor="black"
-                ref={(input) => this.emailInput = input}
-                returnKeyType="next"
-                onSubmitEditing={() => this.passwordInput.focus()}
-                onChangeText = {(text) => this.setState({email: text})}
-                keyboardType="email-address"
-                style={styles.input}
-              />
-              <TextInput
-                autoCorrect={false}
-                autoCapitalize='none'
-                placeholder="password"
-                placeholderTextColor="black"
-                returnKeyType="join"
-                secureTextEntry
-                style={styles.input}
-                onChangeText = {(text) => this.setState({password: text})}
-                ref={(input) => this.passwordInput = input}
-              />
-            </View>
-
-            <View style={styles.registration}>
-              <TouchableOpacity style={styles.registerButtonContainer} onPress={this._register}>
-                <Text style={styles.registerButtonText}>create account</Text>
+          <View style={styles.formContainer}>
+            <TextInput
+              autoCorrect={false}
+              autoCapitalize='none'
+              placeholder="email"
+              placeholderTextColor="#434343"
+              ref={(input) => this.emailInput = input}
+              returnKeyType="next"
+              onSubmitEditing={() => this.passwordInput.focus()}
+              onChangeText = {(text) => this.setState({email: text})}
+              keyboardType="email-address"
+              style={styles.userInput}
+            />
+            <TextInput
+              autoCorrect={false}
+              autoCapitalize='none'
+              placeholder="password"
+              placeholderTextColor="#434343"
+              returnKeyType="join"
+              secureTextEntry
+              style={styles.userInput}
+              onChangeText = {(text) => this.setState({password: text})}
+              ref={(input) => this.passwordInput = input}
+            />
+            <TextInput
+              autoCorrect={false}
+              autoCapitalize='none'
+              placeholder="confirm password"
+              placeholderTextColor="#434343"
+              returnKeyType="join"
+              secureTextEntry
+              style={styles.userInput}
+              onChangeText = {(text) => this.setState({confirmPassword: text})}
+              ref={(input) => this.passwordInput = input}
+            />
+            <View>
+              <TouchableOpacity
+                style={styles.signupButton}
+                disabled={!this.validateForm()}
+                onPress={this._register}
+              >
+                <Text style={styles.signupButtonText}>CREATE ACCOUNT</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -80,39 +101,30 @@ export default class Signup extends Component {
 
 
 const styles = StyleSheet.create({
-  bkgColor: {
+  background: {
     flex: 1,
     backgroundColor: '#000000',
-    padding: 15
   },
-  container: {
+  formContainer: {
     padding: 20,
     marginTop: 180,
   },
-  input: {
+  userInput: {
     height: 40,
     marginBottom: 15,
     borderBottomWidth: 1,
-    borderColor: 'white'
+    borderColor: '#434343',
+    color: 'white',
   },
-  registerButtonContainer: {
-    backgroundColor: '#34495e',
-    padding: 10,
-    height: 40,
-    borderRadius: 20,
-    borderWidth: 1,
-    borderColor: 'white',
-    overflow: 'hidden',
+  signupButton: {
+    backgroundColor: '#434343',
+    paddingTop: 10,
+    paddingBottom: 10,
+    borderWidth: .5,
+    borderRadius: 10,
+    overflow: 'hidden'
   },
-  registration: {
-
-  },
-  loginButtonText: {
-    textAlign: 'center',
-    color: '#FFFFFF',
-    fontWeight: '700'
-  },
-  registerButtonText: {
+  signupButtonText: {
     textAlign: 'center',
     color: '#FFFFFF',
     fontWeight: '700'

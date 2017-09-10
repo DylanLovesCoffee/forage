@@ -7,13 +7,12 @@ import {
   View,
   TouchableOpacity,
   StatusBar,
-  Image,
   KeyboardAvoidingView
 } from 'react-native';
 import Signup from './Signup';
-import * as firebase from 'firebase';
-import { Actions } from 'react-native-router-flux'
-import _ from 'lodash'
+import firebase from '../services/Firebase';
+import { Actions } from 'react-native-router-flux';
+import _ from 'lodash';
 import { StackNavigator } from 'react-navigation';
 import App from '../../App';
 
@@ -41,7 +40,7 @@ export default class Login extends Component {
   render() {
     return (
       <View style={styles.background}>
-        <StatusBar barStyle="default"" />
+        <StatusBar barStyle="default" />
         <KeyboardAvoidingView behavior="padding">
           <View style={styles.formContainer}>
             <TextInput

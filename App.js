@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import {
   AppRegistry,
-  StyleSheet,
-  Text,
-  View,
-  Image,
 } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import { TabNavigator } from "react-navigation";
@@ -80,13 +76,5 @@ const SeeFood = StackNavigator({
   Main: { screen: Main }
 },
 { headerMode: 'none' })
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    backgroundColor: '#E0E0E0'
-  },
-});
 
 AppRegistry.registerComponent('SeeFood', () => SeeFood);
