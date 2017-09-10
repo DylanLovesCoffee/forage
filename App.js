@@ -14,11 +14,16 @@ import Login from './components/account/Login'
 import Signup from './components/account/Signup'
 import RecipeList from './components/Screens/RecipeList';
 import AppCamera from './components/camera/AppCamera';
-import UserProfile from './components/profile/UserProfile'
+import Home from './components/profile/Home'
 import { Icon } from 'native-base';
 
-const Left = StackNavigator({
-  Home: { screen: UserProfile },
+const Account = StackNavigator({
+  Home: {
+    screen: Home,
+    navigationOptions: ({navigation}) => ({
+      title: 'Home',
+    }),
+  },
   RecipeList: { screen: RecipeList },
   Recipe: {
     screen: RecipeScreen,
@@ -61,7 +66,7 @@ const SignInSignUp = StackNavigator({
 })
 
 const Main = TabNavigator({
-  Profile: { screen: Left },
+  Profile: { screen: Account },
   Camera: { screen: Scanner },
 }, {
   tabBarOptions: {

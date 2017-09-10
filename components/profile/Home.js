@@ -14,32 +14,27 @@ import Clarifai from '../utilities/Clarifai'
 import App from '../../App'
 import RecipeList from '../Screens/RecipeList'
 
-export default class UserProfile extends Component {
-  constructor() {
-    super();
+export default class Home extends Component {
+  constructor(props) {
+    super(props);
+
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+
     this.state = {
       userFirstName: "Dylan",
-      recipeList: ds.cloneWithRows(['Lasagna Roll Ups', "Spaghetti all'Amatriciana", 'Baked Ziti', 'Best Tuna Casserole']),
+      recipeList: ds.cloneWithRows(
+        ['Lasagna Roll Ups', "Spaghetti all'Amatriciana", 'Baked Ziti', 'Best Tuna Casserole']
+      ),
       search: ''
     };
-    this.search = this.search.bind(this)
   }
-
-  static navigationOptions = {
-    title: "Home"
-  };
 
   _onPress = () => {
     this.props.navigation.navigate("Cam");
   }
 
-  search(e) {
-    console.log(this.state.search);
-  }
 
   render() {
-    let { navigation } = this.props
     return (
       <View style={styles.container}>
         <View style={styles.name}>
