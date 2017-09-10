@@ -7,7 +7,6 @@ import {
   ListView,
   TextInput,
   TouchableOpacity,
-  Image
 } from 'react-native';
 import AppCamera from '../camera/AppCamera';
 import Clarifai from '../utilities/Clarifai'
@@ -33,10 +32,9 @@ export default class Home extends Component {
     this.props.navigation.navigate("Cam");
   }
 
-
   render() {
     return (
-      <View style={styles.container}>
+      <View style={styles.background}>
         <View style={styles.name}>
           <Text style={styles.username}>Hello, {this.state.userFirstName}</Text>
         </View>
@@ -56,15 +54,16 @@ export default class Home extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    padding:10,
-    flex:1,
-    backgroundColor: '#c0392b'
+  background: {
+    padding: 10,
+    flex: 1,
+    backgroundColor: '#000000'
   },
   username: {
     textAlign: 'center',
     fontWeight: 'bold',
     fontSize: 40,
+    color: 'white'
   },
   dataText: {
     textAlign: 'center',
