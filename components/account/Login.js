@@ -13,7 +13,6 @@ import Signup from './Signup';
 import firebase from '../services/Firebase';
 import { Actions } from 'react-native-router-flux';
 import _ from 'lodash';
-import { StackNavigator } from 'react-navigation';
 import App from '../../App';
 
 export default class Login extends Component {
@@ -34,7 +33,7 @@ export default class Login extends Component {
     }.bind(this)).catch(function(error) {
       console.log(error.code)
       console.log(error.message)
-    })
+    });
   }
 
   render() {
@@ -68,7 +67,7 @@ export default class Login extends Component {
               style={styles.userInput}
               ref={(input) => this.passwordInput = input}
             />
-            <View style={styles.login}>
+            <View>
               <TouchableOpacity style={styles.loginButton} onPress={this._login}>
                 <Text style={styles.loginButtonText}>LOGIN</Text>
               </TouchableOpacity>

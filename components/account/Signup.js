@@ -8,7 +8,8 @@ import {
   TouchableOpacity,
   StatusBar,
   Image,
-  KeyboardAvoidingView
+  KeyboardAvoidingView,
+  Alert
 } from 'react-native';
 import firebase from '../services/Firebase';
 import { Actions } from 'react-native-router-flux'
@@ -37,10 +38,12 @@ export default class Signup extends Component {
   }
 
   _register() {
-    firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).catch(function(error) {
-      console.log(error.code)
-      console.log(error.message)
-    });
+    firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
+    .catch(function(error) {
+      console.log(error.code);
+      console.log(error.message);
+    })
+    .then(Alert.alert("Your account has been created."))
   }
 
   render() {
