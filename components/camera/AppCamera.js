@@ -23,43 +23,34 @@ export default class AppCamera extends Component {
       photos: [],
       items: ''
     }
+    this.getPhotos = this.getPhotos.bind(this)
   }
 
   takePicture() {
     Vibration.vibrate()
     const options = {};
     this.camera.capture({metadata: options})
-    .then((data) => console.log(data))
     .catch(err => console.error(err))
     .then(this.getPhotos)
   }
 
-  getPhotos = () => {
-    CameraRoll.getPhotos({
+  async getPhotos() {
+    let response = await CameraRoll.getPhotos({
       first: 1,
       assetType: 'Photos'
-    })
-    .then(response =>
-      this.setState({photos: response.edges})
-    )
-    .then(this.share)
+    });
+    let savePhoto = await this.setState({photos: response.edges});
+    this.reachClarifai()
   }
 
-  share = () => {
+  async reachClarifai() {
     let image = this.state.photos[0].node.image.uri
-    RNFetchBlob.fs.readFile(image, 'base64')
-    .then((data) => {
-      this.callClarifaiBase(data)
-    })
+    let response = await RNFetchBlob.fs.readFile(image, 'base64')
+    this.Clarifai(response)
   }
 
-
-  // Test Async function for clarifai here
-
-  callClarifaiBase(base) {
-    let helpMe = this
-
-    fetch("https://api.clarifai.com/v2/models/bd367be194cf45149e75f01d59f77ba7/outputs", {
+  async Clarifai(base) {
+    let response = await fetch("https://api.clarifai.com/v2/models/bd367be194cf45149e75f01d59f77ba7/outputs", {
       method: "POST",
       headers: {
         "Authorization": "Key " + API_KEY,
@@ -75,24 +66,21 @@ export default class AppCamera extends Component {
           }
         ]
       })
+    });
+    let body = await response.json();
+    let list = await body.outputs[0].data.concepts.map(function(i) {
+      if (i.value > 0.83) {
+        return i.name;
+      }
+    });
+    let ingredients = await (Array.from(new Set(list))).filter(function(i) {
+      return i !== undefined
     })
-    .then((response) => response.json())
-    .then((responseJson) => {
-      let ingredients = ''
-       console.log(responseJson.outputs[0].data.concepts)
-       responseJson.outputs[0].data.concepts.forEach(function(ingredient) {
-         if (ingredient.value > 0.80) {
-           ingredients += ',' + ingredient.name
-         };
-         console.log(ingredients)
-       });
-       this.setState({ items: ingredients })
-       setTimeout(
-         () => { helpMe.props.navigation.navigate("List", {name: this.state.items}) },
-         2000
-       )
-     })
-   }
+    let itemsList = await this.setState({ items: ingredients.join(', ') })
+    let nav = await this.props.navigation.navigate("List", {name: this.state.items})
+
+    // Should render some sort of loading image on the camera
+  }
 
   render() {
     return(
