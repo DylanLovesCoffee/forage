@@ -1,27 +1,32 @@
 import React, { Component } from 'react';
 import {
   AppRegistry,
+  StyleSheet
 } from 'react-native';
-import { StackNavigator } from 'react-navigation';
-import { TabNavigator } from "react-navigation";
-import { NavigationActions } from "react-navigation";
+import {
+  StackNavigator,
+  TabNavigator,
+  NavigationActions,
+} from 'react-navigation';
 import axios from 'axios';
-import Recipe from './components/recipeList/Recipe'
-import List from './components/recipeList/List'
-import RecipeScreen from './components/recipeList/RecipeScreen'
-import LandingPage from './components/account/LandingPage'
-import Login from './components/account/Login'
-import Signup from './components/account/Signup'
+import Recipe from './components/recipeList/Recipe';
+import List from './components/recipeList/List';
+import RecipeScreen from './components/recipeList/RecipeScreen';
+import LandingPage from './components/account/LandingPage';
+import Login from './components/account/Login';
+import Signup from './components/account/Signup';
 import RecipeList from './components/Screens/RecipeList';
 import AppCamera from './components/camera/AppCamera';
-import Home from './components/profile/Home'
-import { Icon } from 'native-base';
+import Home from './components/profile/Home';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const Account = StackNavigator({
   Home: {
     screen: Home,
     navigationOptions: ({navigation}) => ({
-      title: 'Home',
+      title: 'Favorites',
+      header: null,
+      tabBarIcon: <Icon name="favorite" size={25} style={styles.tabIcons}/>
     }),
   },
   RecipeList: { screen: RecipeList },
@@ -34,7 +39,14 @@ const Account = StackNavigator({
 })
 
 const Scanner = StackNavigator({
-  Cam: { screen: AppCamera },
+  Cam: {
+    screen: AppCamera,
+    navigationOptions: ({navigation}) => ({
+      tabBarIcon: <Icon name="photo-camera" size={25} style={styles.tabIcons}/>,
+      title: "Camera",
+      header: null,
+    })
+  },
   List: { screen: RecipeList },
   Recipe: {
     screen: RecipeScreen,
@@ -65,21 +77,34 @@ const SignInSignUp = StackNavigator({
   },
 })
 
-const Main = TabNavigator({
+const App = TabNavigator({
   Profile: { screen: Account },
   Camera: { screen: Scanner },
 }, {
+  animationEnabled: true,
+  swipeEnabled: true,
   tabBarOptions: {
-    activeTintColor: "red",
-    labelStyle: { fontSize: 12 },
-    tabStyle: { width: 100 },
-  }
+    tintColor: "#232222",
+    activeTintColor: "white",
+    inactiveTintColor: "#232222",
+    labelStyle: { fontSize: 15 },
+    style: { backgroundColor: "#000000" },
+  },
 })
 
 const SeeFood = StackNavigator({
-  Home: { screen: SignInSignUp },
-  Main: { screen: Main }
-},
-{ headerMode: 'none' })
+  Splash: { screen: SignInSignUp },
+  Main: { screen: App }
+}, {
+  headerMode: 'none'
+});
+
+const styles = StyleSheet.create({
+  tabIcons: {
+    flex: 1,
+    color: '#434343',
+    justifyContent: 'center',
+  },
+});
 
 AppRegistry.registerComponent('SeeFood', () => SeeFood);

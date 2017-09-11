@@ -29,7 +29,7 @@ export default class Login extends Component {
   _login() {
     firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
     .then(function(user){
-      this.props.navigation.navigate('Profile')
+      this.props.navigation.navigate('Camera')
     }.bind(this)).catch(function(error) {
       console.log(error.code)
       console.log(error.message)

@@ -7,6 +7,7 @@ import {
   ListView,
   TextInput,
   TouchableOpacity,
+  StatusBar,
 } from 'react-native';
 import AppCamera from '../camera/AppCamera';
 import Clarifai from '../utilities/Clarifai'
@@ -35,17 +36,15 @@ export default class Home extends Component {
   render() {
     return (
       <View style={styles.background}>
+        <StatusBar barStyle="light-content"/>
         <View style={styles.name}>
-          <Text style={styles.username}>Hello, {this.state.userFirstName}</Text>
-        </View>
-        <View style={styles.favorites}>
-          <Text style={styles.favText}>Favorites</Text>
+          <Text style={styles.welcome}>Hello, {this.state.userFirstName}</Text>
         </View>
         <ListView
         dataSource={this.state.recipeList}
         renderRow={(rowData) =>
-          <View style={styles.text}>
-            <Text style={styles.dataText}>{rowData}</Text>
+          <View style={styles.listContainer}>
+            <Text style={styles.listText}>{rowData}</Text>
           </View>}
         />
       </View>
@@ -59,33 +58,24 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#000000'
   },
-  username: {
-    textAlign: 'center',
-    fontWeight: 'bold',
-    fontSize: 40,
-    color: 'white'
-  },
-  dataText: {
-    textAlign: 'center',
-    fontSize: 20,
-    color: 'white',
-    backgroundColor: '#34495e',
-    padding: 10,
-    height: 40,
-    borderRadius: 20,
-    borderWidth: 1,
-    borderColor: 'white',
-    overflow: 'hidden',
-  },
-  text: {
-    marginTop: 40
-  },
-  favorites: {
-    padding: 10,
-  },
-  favText: {
-    color: 'white',
+  welcome: {
     textAlign: 'center',
     fontSize: 30,
-  }
+    color: 'white',
+    marginTop: 20,
+  },
+  listText: {
+    textAlign: 'center',
+    fontSize: 15,
+    color: 'white',
+    paddingTop: 10,
+    paddingBottom: 10,
+    borderRadius: 10,
+    borderWidth: .5,
+    borderColor: '#434343',
+    overflow: 'hidden',
+  },
+  listContainer: {
+    marginTop: 40
+  },
 })
