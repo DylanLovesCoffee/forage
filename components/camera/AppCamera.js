@@ -24,10 +24,6 @@ export default class AppCamera extends Component {
     }
   }
 
-  static navigationOptions = {
-    title: "Camera",
-  };
-
   takePicture() {
     const options = {};
     this.camera.capture({metadata: options})

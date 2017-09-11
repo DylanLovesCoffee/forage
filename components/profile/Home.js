@@ -38,9 +38,6 @@ export default class Home extends Component {
         <View style={styles.name}>
           <Text style={styles.username}>Hello, {this.state.userFirstName}</Text>
         </View>
-        <View style={styles.favorites}>
-          <Text style={styles.favText}>Favorites</Text>
-        </View>
         <ListView
         dataSource={this.state.recipeList}
         renderRow={(rowData) =>
@@ -80,12 +77,4 @@ const styles = StyleSheet.create({
   text: {
     marginTop: 40
   },
-  favorites: {
-    padding: 10,
-  },
-  favText: {
-    color: 'white',
-    textAlign: 'center',
-    fontSize: 30,
-  }
 })
