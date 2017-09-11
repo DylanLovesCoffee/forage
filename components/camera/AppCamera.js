@@ -97,7 +97,10 @@ export default class AppCamera extends Component {
             this.camera = cam;
           }}
           style={styles.preview}
-          aspect={Camera.constants.Aspect.fill}>
+          aspect={Camera.constants.Aspect.fill}
+          keepAwake={true}
+          captureTarget={Camera.constants.CaptureTarget.cameraRoll}
+        >
           <TouchableHighlight>
               <Text style={styles.capture}  onPress={this.takePicture.bind(this)}><Icon name="camera" size={50}/></Text>
           </TouchableHighlight>
