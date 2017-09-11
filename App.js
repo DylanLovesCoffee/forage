@@ -24,8 +24,9 @@ const Account = StackNavigator({
   Home: {
     screen: Home,
     navigationOptions: ({navigation}) => ({
-      title: 'HOME',
-      tabBarIcon: <Icon name="home" size={25} style={styles.tabIcons}/>
+      title: 'Favorites',
+      header: null,
+      tabBarIcon: <Icon name="favorite" size={25} style={styles.tabIcons}/>
     }),
   },
   RecipeList: { screen: RecipeList },
@@ -42,7 +43,8 @@ const Scanner = StackNavigator({
     screen: AppCamera,
     navigationOptions: ({navigation}) => ({
       tabBarIcon: <Icon name="photo-camera" size={25} style={styles.tabIcons}/>,
-      title: "CAMERA"
+      title: "Camera",
+      header: null,
     })
   },
   List: { screen: RecipeList },
