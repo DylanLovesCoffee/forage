@@ -77,7 +77,7 @@ const SignInSignUp = StackNavigator({
   },
 })
 
-const Main = TabNavigator({
+const App = TabNavigator({
   Profile: { screen: Account },
   Camera: { screen: Scanner },
 }, {
@@ -93,10 +93,11 @@ const Main = TabNavigator({
 })
 
 const SeeFood = StackNavigator({
-  Home: { screen: SignInSignUp },
-  Main: { screen: Main }
-},
-{ headerMode: 'none' })
+  Splash: { screen: SignInSignUp },
+  Main: { screen: App }
+}, {
+  headerMode: 'none'
+});
 
 const styles = StyleSheet.create({
   tabIcons: {
