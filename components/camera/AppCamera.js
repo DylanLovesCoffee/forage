@@ -8,6 +8,7 @@ import {
   Button,
   CameraRoll,
   TouchableHighlight,
+  Vibration,
 } from 'react-native';
 import Camera from 'react-native-camera';
 import Share from 'react-native-share';
@@ -25,6 +26,7 @@ export default class AppCamera extends Component {
   }
 
   takePicture() {
+    Vibration.vibrate()
     const options = {};
     this.camera.capture({metadata: options})
     .then((data) => console.log(data))
@@ -50,6 +52,9 @@ export default class AppCamera extends Component {
       this.callClarifaiBase(data)
     })
   }
+
+
+  // Test Async function for clarifai here
 
   callClarifaiBase(base) {
     let helpMe = this
@@ -102,7 +107,11 @@ export default class AppCamera extends Component {
           captureTarget={Camera.constants.CaptureTarget.cameraRoll}
         >
           <TouchableHighlight>
-              <Text style={styles.capture}  onPress={this.takePicture.bind(this)}><Icon name="camera" size={50}/></Text>
+              <Text
+                style={styles.capture}  onPress={this.takePicture.bind(this)}
+              >
+                <Icon name="camera" size={40}/>
+              </Text>
           </TouchableHighlight>
         </Camera>
       </View>
