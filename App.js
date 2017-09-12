@@ -92,7 +92,7 @@ const App = TabNavigator({
   },
 })
 
-const SeeFood = StackNavigator({
+const Forage = StackNavigator({
   Splash: { screen: SignInSignUp },
   Main: { screen: App }
 }, {
@@ -107,4 +107,4 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('SeeFood', () => SeeFood);
+AppRegistry.registerComponent('Forage', () => Forage);
