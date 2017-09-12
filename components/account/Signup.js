@@ -39,11 +39,8 @@ export default class Signup extends Component {
 
   _register() {
     firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
-    .catch(function(error) {
-      console.log(error.code);
-      console.log(error.message);
-    })
-    .then(Alert.alert("Your account has been created."))
+    .catch(error => Alert.alert(error.message))
+    // Nothing to give user feedback upon account creation
   }
 
   render() {

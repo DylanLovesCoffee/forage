@@ -36,11 +36,11 @@
 		</dict>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>Omakase would like to access your camera</string>
+	<string>Forage would like to access your camera</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Omakase would like to access your location</string>
+	<string>Forage would like to access your location</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Omakase would like to access your photo library</string>
+	<string>Forage would like to access your photo library</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Entypo.ttf</string>

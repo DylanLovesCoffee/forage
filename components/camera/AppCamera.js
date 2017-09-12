@@ -76,10 +76,9 @@ export default class AppCamera extends Component {
     let ingredients = await (Array.from(new Set(list))).filter(function(i) {
       return i !== undefined
     })
-    let itemsList = await this.setState({ items: ingredients.join(', ') })
-    let nav = await this.props.navigation.navigate("List", {name: this.state.items})
-
-    // Should render some sort of loading image on the camera
+    this.setState({ items: ingredients.join(', ') })
+    // this.props.navigation.navigate("List", {name: this.state.items})
+    // Should render some sort of loading image on the camera before navigation
   }
 
   render() {

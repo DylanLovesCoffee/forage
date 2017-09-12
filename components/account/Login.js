@@ -7,7 +7,8 @@ import {
   View,
   TouchableOpacity,
   StatusBar,
-  KeyboardAvoidingView
+  KeyboardAvoidingView,
+  Alert
 } from 'react-native';
 import Signup from './Signup';
 import firebase from '../services/Firebase';
@@ -28,11 +29,10 @@ export default class Login extends Component {
 
   _login() {
     firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
-    .then(function(user){
+    .then(function(){
       this.props.navigation.navigate('Camera')
     }.bind(this)).catch(function(error) {
-      console.log(error.code)
-      console.log(error.message)
+      Alert.alert(error.message)
     });
   }
 
