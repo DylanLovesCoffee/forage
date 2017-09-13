@@ -4,7 +4,7 @@ import {
   StyleSheet,
   Text,
   View,
-  Image,
+  ImageBackground,
   Button,
   CameraRoll,
   TouchableHighlight,
@@ -21,7 +21,8 @@ export default class AppCamera extends Component {
     super();
     this.state = {
       photos: [],
-      items: ''
+      items: '',
+      photoTaken: false
     }
     this.getPhotos = this.getPhotos.bind(this)
   }
@@ -39,7 +40,7 @@ export default class AppCamera extends Component {
       first: 1,
       assetType: 'Photos'
     });
-    let savePhoto = await this.setState({photos: response.edges});
+    let savePhoto = await this.setState({photos: response.edges, photoTaken: true });
     this.reachClarifai()
   }
 
@@ -81,26 +82,40 @@ export default class AppCamera extends Component {
     // Should render some sort of loading image on the camera before navigation
   }
 
+  renderImage() {
+    return(
+      <ImageBackground source={{uri: this.state.photos[0].node.image.uri, isStatic: true}}>
+        <Text>Test</Text>
+      </ImageBackground>
+    )
+  }
+
+  renderCamera() {
+    return(
+      <Camera
+        ref={(cam) => {
+          this.camera = cam;
+        }}
+        style={styles.preview}
+        aspect={Camera.constants.Aspect.fill}
+        keepAwake={true}
+        captureTarget={Camera.constants.CaptureTarget.cameraRoll}
+      >
+        <TouchableHighlight>
+            <Text
+              style={styles.capture}  onPress={this.takePicture.bind(this)}
+            >
+              <Icon name="camera" size={40}/>
+            </Text>
+        </TouchableHighlight>
+      </Camera>
+    )
+  }
+
   render() {
     return(
       <View style={styles.container}>
-        <Camera
-          ref={(cam) => {
-            this.camera = cam;
-          }}
-          style={styles.preview}
-          aspect={Camera.constants.Aspect.fill}
-          keepAwake={true}
-          captureTarget={Camera.constants.CaptureTarget.cameraRoll}
-        >
-          <TouchableHighlight>
-              <Text
-                style={styles.capture}  onPress={this.takePicture.bind(this)}
-              >
-                <Icon name="camera" size={40}/>
-              </Text>
-          </TouchableHighlight>
-        </Camera>
+        {this.state.photoTaken === false ? this.renderCamera() : this.renderImage()}
       </View>
     )
   }
