@@ -84,8 +84,11 @@ export default class AppCamera extends Component {
 
   renderImage() {
     return(
-      <ImageBackground source={{uri: this.state.photos[0].node.image.uri, isStatic: true}}>
-        <Text>Test</Text>
+      <ImageBackground
+        style={styles.photo}
+        source={{uri: this.state.photos[0].node.image.uri, isStatic: true}}
+      >
+        <Text>TESTTTTTT</Text>
       </ImageBackground>
     )
   }
@@ -140,7 +143,12 @@ const styles = StyleSheet.create({
     padding: 10,
     margin: 40
   },
-
+  photo: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    flex: 1,
+    resizeMode: 'cover'
+  },
 });
 
 
