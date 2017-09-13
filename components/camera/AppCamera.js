@@ -88,7 +88,16 @@ export default class AppCamera extends Component {
         style={styles.photo}
         source={{uri: this.state.photos[0].node.image.uri, isStatic: true}}
       >
-        <Text>TESTTTTTT</Text>
+        <TouchableHighlight>
+          <Text style={styles.sendPhoto}>
+            <Icon name="send" size={40}/>
+          </Text>
+        </TouchableHighlight>
+        <TouchableHighlight>
+          <Text style={styles.clearPhoto}>
+            <Icon name="clear" size={25}/>
+          </Text>
+        </TouchableHighlight>
       </ImageBackground>
     )
   }
@@ -139,8 +148,8 @@ const styles = StyleSheet.create({
   capture: {
     flex: 0,
     borderRadius: 5,
-    color: '#D3D3D3',
     padding: 10,
+    color: '#434343',
     margin: 40
   },
   photo: {
@@ -149,6 +158,14 @@ const styles = StyleSheet.create({
     flex: 1,
     resizeMode: 'cover'
   },
+  sendPhoto: {
+    color: '#434343',
+    top: 230,
+  },
+  clearPhoto: {
+    color: '#434343',
+    top: 245,
+  }
 });
 
 
