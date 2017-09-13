@@ -78,12 +78,15 @@ export default class AppCamera extends Component {
       return i !== undefined
     })
     this.setState({ items: ingredients.join(', ') })
-    // this.props.navigation.navigate("List", {name: this.state.items})
-    // Should render some sort of loading image on the camera before navigation
   }
 
   exitPhoto() {
     this.setState({photoTaken: false})
+  }
+
+  getRecipes() {
+    this.props.navigation.navigate("List", {name: this.state.items})
+    // Should render some sort of loading image on the camera before navigation
   }
 
   renderImage() {
@@ -93,13 +96,16 @@ export default class AppCamera extends Component {
         source={{uri: this.state.photos[0].node.image.uri, isStatic: true}}
       >
         <TouchableHighlight>
-          <Text style={styles.sendPhoto}>
+          <Text
+            style={styles.sendPhotoButton}
+            onPress={this.getRecipes.bind(this)}
+          >
             <Icon name="send" size={40}/>
           </Text>
         </TouchableHighlight>
         <TouchableHighlight>
           <Text
-            style={styles.clearPhoto}
+            style={styles.clearPhotoButton}
             onPress={this.exitPhoto.bind(this)}
           >
             <Icon name="clear" size={25}/>
@@ -165,11 +171,11 @@ const styles = StyleSheet.create({
     flex: 1,
     resizeMode: 'cover'
   },
-  sendPhoto: {
+  sendPhotoButton: {
     color: '#434343',
     top: 230,
   },
-  clearPhoto: {
+  clearPhotoButton: {
     color: '#434343',
     top: 245,
   }
