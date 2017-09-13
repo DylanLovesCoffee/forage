@@ -82,6 +82,10 @@ export default class AppCamera extends Component {
     // Should render some sort of loading image on the camera before navigation
   }
 
+  exitPhoto() {
+    this.setState({photoTaken: false})
+  }
+
   renderImage() {
     return(
       <ImageBackground
@@ -94,7 +98,10 @@ export default class AppCamera extends Component {
           </Text>
         </TouchableHighlight>
         <TouchableHighlight>
-          <Text style={styles.clearPhoto}>
+          <Text
+            style={styles.clearPhoto}
+            onPress={this.exitPhoto.bind(this)}
+          >
             <Icon name="clear" size={25}/>
           </Text>
         </TouchableHighlight>
