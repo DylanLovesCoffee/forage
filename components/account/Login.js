@@ -45,7 +45,7 @@ export default class Login extends Component {
             <TextInput
               autoCorrect={false}
               autoCapitalize='none'
-              placeholder="email"
+              placeholder="Email"
               placeholderTextColor="#434343"
               returnKeyType="next"
               onChangeText = {(text) => this.setState({email: text})}
@@ -58,7 +58,7 @@ export default class Login extends Component {
             <TextInput
               autoCorrect={false}
               autoCapitalize='none'
-              placeholder="password"
+              placeholder="Password"
               placeholderTextColor="#434343"
               onChangeText = {(text) => this.setState({password: text})}
               value={this.state.password}
@@ -107,6 +107,6 @@ const styles = StyleSheet.create({
   loginButtonText: {
     textAlign: 'center',
     color: '#FFFFFF',
-    fontWeight: '700'
+    fontWeight: '500'
   },
 });

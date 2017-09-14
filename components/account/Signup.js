@@ -9,7 +9,7 @@ import {
   StatusBar,
   Image,
   KeyboardAvoidingView,
-  Alert
+  Alert,
 } from 'react-native';
 import firebase from '../services/Firebase';
 import { Actions } from 'react-native-router-flux'
@@ -21,15 +21,18 @@ export default class Signup extends Component {
     super(props)
 
     this.state = {
+      name: '',
       email: '',
       password: '',
-      confirmPassword: ''
+      confirmPassword: '',
+      errors: undefined,
     }
     this._register = this._register.bind(this)
   }
 
   validateForm() {
     return (
+      this.state.name.length > 0 &&
       this.state.email.length > 0 &&
       this.state.password.length > 0 &&
       this.state.confirmPassword.length > 0 &&
@@ -37,10 +40,20 @@ export default class Signup extends Component {
     );
   }
 
+  // createUserProfile() {
+  //   firebase.database()
+  // }
+
   _register() {
+    this.state.errors !== undefined ? this.setState({errors: undefined}) : null;
     firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
-    .catch(error => Alert.alert(error.message))
-    // Nothing to give user feedback upon account creation
+    .catch(error => this.setState({errors: error.message}))
+  }
+
+  renderErrorMessage() {
+    return(
+      <Text style={styles.errorText}>*{this.state.errors}</Text>
+    )
   }
 
   render() {
@@ -49,14 +62,28 @@ export default class Signup extends Component {
         <StatusBar barStyle="default"/>
         <KeyboardAvoidingView behavior="padding">
           <View style={styles.formContainer}>
+            <View>
+              {this.state.errors !== undefined ? this.renderErrorMessage() : null }
+            </View>
             <TextInput
               autoCorrect={false}
               autoCapitalize='none'
-              placeholder="email"
+              placeholder="What should we call you?"
+              placeholderTextColor="#434343"
+              ref={(input) => this.nameInput = input}
+              returnKeyType="next"
+              onSubmitEditing={() => this.nameInput.focus()}
+              onChangeText = {(text) => this.setState({name: text})}
+              style={styles.userInput}
+            />
+            <TextInput
+              autoCorrect={false}
+              autoCapitalize='none'
+              placeholder="Email"
               placeholderTextColor="#434343"
               ref={(input) => this.emailInput = input}
               returnKeyType="next"
-              onSubmitEditing={() => this.passwordInput.focus()}
+              onSubmitEditing={() => this.emailInput.focus()}
               onChangeText = {(text) => this.setState({email: text})}
               keyboardType="email-address"
               style={styles.userInput}
@@ -64,7 +91,7 @@ export default class Signup extends Component {
             <TextInput
               autoCorrect={false}
               autoCapitalize='none'
-              placeholder="password"
+              placeholder="Password"
               placeholderTextColor="#434343"
               returnKeyType="join"
               secureTextEntry
@@ -75,7 +102,7 @@ export default class Signup extends Component {
             <TextInput
               autoCorrect={false}
               autoCapitalize='none'
-              placeholder="confirm password"
+              placeholder="Confirm Password"
               placeholderTextColor="#434343"
               returnKeyType="join"
               secureTextEntry
@@ -127,6 +154,9 @@ const styles = StyleSheet.create({
   signupButtonText: {
     textAlign: 'center',
     color: '#FFFFFF',
-    fontWeight: '700'
-  }
+    fontWeight: '500'
+  },
+  errorText: {
+    color: 'red'
+  },
 });
