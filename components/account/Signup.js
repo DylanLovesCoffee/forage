@@ -39,9 +39,15 @@ export default class Signup extends Component {
 
   _register() {
     this.state.errors !== undefined ? this.setState({errors: undefined}) : null;
+
     firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
     .catch(error => this.setState({errors: error.message}));
-    this.createUserProfile()
+
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        this.createUserProfile()
+      }
+    }.bind(this));
   }
 
   createUserProfile() {
