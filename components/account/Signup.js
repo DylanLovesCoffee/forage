@@ -7,12 +7,9 @@ import {
   View,
   TouchableOpacity,
   StatusBar,
-  Image,
   KeyboardAvoidingView,
-  Alert,
 } from 'react-native';
 import firebase from '../services/Firebase';
-import { Actions } from 'react-native-router-flux'
 import _ from 'lodash'
 
 export default class Signup extends Component {
@@ -40,14 +37,26 @@ export default class Signup extends Component {
     );
   }
 
-  // createUserProfile() {
-  //   firebase.database()
-  // }
-
   _register() {
     this.state.errors !== undefined ? this.setState({errors: undefined}) : null;
     firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
-    .catch(error => this.setState({errors: error.message}))
+    .catch(error => this.setState({errors: error.message}));
+    this.createUserProfile()
+  }
+
+  createUserProfile() {
+    if (this.state.errors === undefined) {
+      let userInput = {
+        uid: firebase.auth().currentUser.uid,
+        name: this.state.name,
+        email: this.state.email,
+      }
+      let newUserData = {}
+      newUserData['/users/' + userInput['uid']] = userInput
+
+      firebase.database().ref().update(newUserData)
+      this.props.navigation.navigate('Camera')
+    }
   }
 
   renderErrorMessage() {
