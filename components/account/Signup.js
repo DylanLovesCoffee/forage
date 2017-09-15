@@ -37,32 +37,36 @@ export default class Signup extends Component {
     );
   }
 
-  _register() {
-    this.state.errors !== undefined ? this.setState({errors: undefined}) : null;
 
-    firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
+  async _register() {
+    let clearErrors = await this.setState({errors: undefined})
+
+    let authUser = await firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
     .catch(error => this.setState({errors: error.message}));
 
-    firebase.auth().onAuthStateChanged(function(user) {
-      if (user) {
-        this.createUserProfile()
-      }
-    }.bind(this));
+    if (this.state.errors !== undefined) {
+      console.log("Error creating user.")
+    } else if (this.state.errors === undefined) {
+      console.log("Proceed to save user info in database.")
+      this.createUserProfile();
+    }
   }
 
   createUserProfile() {
-    if (this.state.errors === undefined) {
-      let userInput = {
-        uid: firebase.auth().currentUser.uid,
-        name: this.state.name,
-        email: this.state.email,
-      }
-      let newUserData = {}
-      newUserData['/users/' + userInput['uid']] = userInput
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        let userInput = {
+          uid: user.uid,
+          name: this.state.name,
+          email: this.state.email,
+        }
+        let newUserData = {}
+        newUserData['/users/' + user.uid] = userInput
 
-      firebase.database().ref().update(newUserData)
-      this.props.navigation.navigate('Camera')
-    }
+        firebase.database().ref().update(newUserData)
+        this.props.navigation.navigate('Camera')
+      }
+    }.bind(this));
   }
 
   renderErrorMessage() {
