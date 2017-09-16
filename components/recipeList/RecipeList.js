@@ -6,7 +6,6 @@ import {
   View,
   Image,
 } from 'react-native';
-import axios from 'axios';
 import List from '../recipeList/List'
 import { RFN_KEY } from 'react-native-dotenv';
 
@@ -18,10 +17,6 @@ export default class RecipeList extends Component {
         {title: 'Loading... 🍔'},
       ]
     }
-  }
-
-  static navigationOptions = {
-    title: 'Recipes',
   }
 
   async componentDidMount() {

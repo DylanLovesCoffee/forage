@@ -8,14 +8,13 @@ import {
   TabNavigator,
   NavigationActions,
 } from 'react-navigation';
-import axios from 'axios';
 import Recipe from './components/recipeList/Recipe';
 import List from './components/recipeList/List';
 import RecipeScreen from './components/recipeList/RecipeScreen';
 import LandingPage from './components/account/LandingPage';
 import Login from './components/account/Login';
 import Signup from './components/account/Signup';
-import RecipeList from './components/Screens/RecipeList';
+import RecipeList from './components/recipeList/RecipeList';
 import AppCamera from './components/camera/AppCamera';
 import Home from './components/profile/Home';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -47,7 +46,12 @@ const Scanner = StackNavigator({
       header: null,
     })
   },
-  List: { screen: RecipeList },
+  List: {
+    screen: RecipeList,
+    navigationOptions: ({navigation}) => ({
+      title: "Recipes",
+    })
+  },
   Recipe: {
     screen: RecipeScreen,
     navigationOptions: ({navigation}) => ({
