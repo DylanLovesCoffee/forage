@@ -24,15 +24,17 @@ export default class RecipeList extends Component {
     title: 'Recipes',
   }
 
-  componentDidMount() {
-    var str = this.props.navigation.state.params.name
-    var url = "https://protected-mesa-93226.herokuapp.com/results?food="
-    // var key = "&api_key=" + RFN_KEY
-    axios.get(url + str)
-    .then((response) => {
-      console.log(response);
-      this.setState({ data : response.data })
+  async componentDidMount() {
+    let url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?fillIngredients=false&ingredients=" + this.props.navigation.state.params.name + "&limitLicense=false&number=5&ranking=1"
+
+    let responseJson = await fetch(url, {
+      headers: {
+        "X-Mashape-Key": RFN_KEY,
+        "Accept": "application/json"
+      }
     })
+    .then(response => response.json())
+    this.setState({data: responseJson})
   }
 
   render() {
