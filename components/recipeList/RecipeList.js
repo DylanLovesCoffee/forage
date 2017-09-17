@@ -6,8 +6,8 @@ import {
   View,
   Image,
 } from 'react-native';
-import List from '../recipeList/List'
 import { RFN_KEY } from 'react-native-dotenv';
+import Recipe from './Recipe';
 
 export default class RecipeList extends Component {
   constructor() {
@@ -33,10 +33,12 @@ export default class RecipeList extends Component {
   }
 
   render() {
-    const { navigate } = this.props.navigation
+    let { navigate } = this.props.navigation
     return (
       <View style={styles.container}>
-        <List recipes={this.state.data} navigate={navigate}/>
+        {this.state.data.map(function(recipe, i) {
+          return <Recipe navigate={navigate} id={recipe.id} title={recipe.title} key={i} />
+        })}
       </View>
     );
   }

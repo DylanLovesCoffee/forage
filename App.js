@@ -9,7 +9,6 @@ import {
   NavigationActions,
 } from 'react-navigation';
 import Recipe from './components/recipeList/Recipe';
-import List from './components/recipeList/List';
 import RecipeScreen from './components/recipeList/RecipeScreen';
 import LandingPage from './components/account/LandingPage';
 import Login from './components/account/Login';
@@ -28,16 +27,16 @@ const Account = StackNavigator({
       tabBarIcon: <Icon name="favorite" size={25} style={styles.tabIcons}/>
     }),
   },
-  RecipeList: { screen: RecipeList },
-  Recipe: {
-    screen: RecipeScreen,
-    navigationOptions: ({navigation}) => ({
-      title: `${navigation.state.params.title}`,
-    }),
-   }
+  // RecipeList: { screen: RecipeList },
+  // Recipe: {
+  //   screen: RecipeScreen,
+  //   navigationOptions: ({navigation}) => ({
+  //     title: `${navigation.state.params.title}`,
+  //   }),
+  //  }
 })
 
-const Scanner = StackNavigator({
+const Camera = StackNavigator({
   Cam: {
     screen: AppCamera,
     navigationOptions: ({navigation}) => ({
@@ -83,7 +82,7 @@ const SignInSignUp = StackNavigator({
 
 const App = TabNavigator({
   Profile: { screen: Account },
-  Camera: { screen: Scanner },
+  Camera: { screen: Camera },
 }, {
   animationEnabled: true,
   swipeEnabled: true,

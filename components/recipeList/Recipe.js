@@ -11,14 +11,28 @@ import { StackNavigator } from 'react-navigation';
 export default class Recipe extends Component {
   render() {
 
-    let {title, navigate, instructions} = this.props
+    let { title, navigate, id } = this.props
     return(
       <View>
         <Button
-          onPress={() => navigate('Recipe', { title: title, instructions: instructions })}
-          title={title} instructions={instructions}
+          onPress={() => navigate('Recipe', { title: title, id: id })}
+          title={title} id={id}
         />
       </View>
     )
   }
 }
+
+
+// async getRecipeDetails() {
+//   let url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/" + this.props.recipeId + "/information?includenutrition=false"
+//
+//   let recipeDetailsJson = await fetch(url, {
+//     headers: {
+//       "X-Mashape-Key": RFN_KEY,
+//       "Accept": "application/json"
+//     }
+//   })
+//   .then(response => response.json())
+//   this.setState({recipeDetails: recipeDetailsJson})
+// }
