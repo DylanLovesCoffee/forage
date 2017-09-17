@@ -61,7 +61,9 @@ export default class RecipeList extends Component {
 
   renderLoading() {
     return(
-      <Text style={styles.loading}>Loading...</Text>
+      <View style={styles.loadingContainer}>
+        <Text style={styles.loading}>Loading...</Text>
+      </View>
     )
   }
 
@@ -76,5 +78,10 @@ const styles = StyleSheet.create({
   },
   loading: {
     color: '#FFFFFF',
+    fontSize: 15,
+  },
+  loadingContainer: {
+    textAlign: 'center',
+    justifyContent: 'center'
   }
 });
