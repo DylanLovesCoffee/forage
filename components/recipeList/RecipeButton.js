@@ -7,32 +7,42 @@ import {
   Button
 } from 'react-native';
 import { StackNavigator } from 'react-navigation';
+import { RFN_KEY } from 'react-native-dotenv';
 
 export default class RecipeButton extends Component {
-  render() {
+  // constructor(props) {
+  //   super(props);
+  //
+  //   this.state = {
+  //     recipeDetails: null
+  //   }
+  // }
 
-    let { title, navigate, id } = this.props
+  async getRecipeDetails() {
+    let url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/" + this.props.id + "/information?includenutrition=false"
+
+    let recipeDetailsJson = await fetch(url, {
+      headers: {
+        "X-Mashape-Key": RFN_KEY,
+        "Accept": "application/json"
+      }
+    })
+    .then(response => response.json())
+
+    // let storeDetails = await this.setState({recipeDetails: recipeDetailsJson})
+
+    this.props.navigate('Recipe', { title: this.props.title, recipeDetails: recipeDetailsJson })
+  }
+
+  render() {
+    let { title, id, navigate } = this.props
     return(
       <View>
         <Button
-          onPress={() => navigate('Recipe', { title: title, id: id })}
-          title={title} id={id}
+          onPress={this.getRecipeDetails.bind(this)}
+          title={title}
         />
       </View>
     )
   }
 }
-
-
-// async getRecipeDetails() {
-//   let url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/" + this.props.recipeId + "/information?includenutrition=false"
-//
-//   let recipeDetailsJson = await fetch(url, {
-//     headers: {
-//       "X-Mashape-Key": RFN_KEY,
-//       "Accept": "application/json"
-//     }
-//   })
-//   .then(response => response.json())
-//   this.setState({recipeDetails: recipeDetailsJson})
-// }
