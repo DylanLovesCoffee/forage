@@ -37,7 +37,12 @@ export default class RecipeList extends Component {
     return (
       <View style={styles.container}>
         {this.state.data.map(function(recipe, i) {
-          return <RecipeButton navigate={navigate} id={recipe.id} title={recipe.title} key={i} />
+          return <RecipeButton
+            navigate={navigate}
+            id={recipe.id}
+            title={recipe.title}
+            key={i}
+          />
         })}
       </View>
     );
@@ -47,7 +52,8 @@ export default class RecipeList extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    padding: 10,
     justifyContent: 'center',
-    backgroundColor: '#c0392b'
+    backgroundColor: '#000000'
   },
 });
