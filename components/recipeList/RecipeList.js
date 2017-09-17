@@ -14,12 +14,13 @@ export default class RecipeList extends Component {
     super();
     this.state = {
       data : [
-        { title: "Loading... " }
-      ]
+        { title: "" }
+      ],
+      loaded: false
     }
   }
 
-  async componentDidMount() {
+  async componentWillMount() {
     let url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?fillIngredients=false&ingredients=" + this.props.navigation.state.params.name + "&limitLicense=false&number=5&ranking=1"
 
     let responseJson = await fetch(url, {
@@ -29,13 +30,23 @@ export default class RecipeList extends Component {
       }
     })
     .then(response => response.json())
-    this.setState({data: responseJson})
+    .then(rJson => this.setState({data: rJson, loaded: true})
+)
   }
 
   render() {
     let { navigate } = this.props.navigation
     return (
       <View style={styles.background}>
+        {this.state.loaded === true ? this.renderList() : this.renderLoading()}
+      </View>
+    );
+  }
+
+  renderList() {
+    let { navigate } = this.props.navigation
+    return(
+      <View>
         {this.state.data.map(function(recipe, i) {
           return <RecipeButton
             navigate={navigate}
@@ -45,7 +56,13 @@ export default class RecipeList extends Component {
           />
         })}
       </View>
-    );
+    )
+  }
+
+  renderLoading() {
+    return(
+      <Text style={styles.loading}>Loading...</Text>
+    )
   }
 
 }
@@ -57,4 +74,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#000000'
   },
+  loading: {
+    color: '#FFFFFF',
+  }
 });
