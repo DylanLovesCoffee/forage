@@ -12,15 +12,12 @@ export default class RecipeScreen extends Component {
 
   render() {
     let recipe = this.props.navigation.state.params.recipeDetails
-      // let instructionsString = this.props.navigation.state.params.instructions.replace(/\s+/g,' ').trim();
-      // console.error = (error) => error.apply;
-      // let instructionsArray = instructionsString.split('. ')
+    let instructionsArray = recipe.instructions.replace(/\s+/g,' ').trim().split('. ')
     return(
       <ScrollView>
-        {/* {instructionsArray.map(function(line) {
-          return(<Text>{line + '. \n'}</Text>)
-        })} */}
-        <Text>{recipe.instructions}</Text>
+        {instructionsArray.map(function(line, i) {
+          return(<Text key={i}>{i + 1}. {line + '\n'}</Text>)
+        })}
       </ScrollView>
     )
   }
