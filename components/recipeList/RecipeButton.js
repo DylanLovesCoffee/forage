@@ -21,10 +21,11 @@ export default class RecipeButton extends Component {
       }
     })
     .then(response => response.json())
+    this.navigateToDetails(recipeDetailsJson)
+  }
 
-    // let storeDetails = await this.setState({recipeDetails: recipeDetailsJson})
-
-    this.props.navigate('Recipe', { title: this.props.title, recipeDetails: recipeDetailsJson })
+  navigateToDetails(details) {
+    this.props.navigate('Recipe', { title: this.props.title, recipeDetails: details })
   }
 
   render() {

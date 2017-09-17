@@ -8,9 +8,10 @@ import {
 } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 
-export default class RecipeScreen extends Component {
+export default class RecipeDetails extends Component {
 
   render() {
+    console.log("This is in the details")
     let recipe = this.props.navigation.state.params.recipeDetails
     let instructionsArray = recipe.instructions.replace(/\s+/g,' ').trim().split('. ')
     return(

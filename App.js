@@ -9,7 +9,7 @@ import {
   NavigationActions,
 } from 'react-navigation';
 import RecipeButton from './components/recipeList/RecipeButton';
-import RecipeScreen from './components/recipeList/RecipeScreen';
+import RecipeDetails from './components/recipeList/RecipeDetails';
 import LandingPage from './components/account/LandingPage';
 import Login from './components/account/Login';
 import Signup from './components/account/Signup';
@@ -29,7 +29,7 @@ const Account = StackNavigator({
   },
   // RecipeList: { screen: RecipeList },
   // Recipe: {
-  //   screen: RecipeScreen,
+  //   screen: RecipeDetails,
   //   navigationOptions: ({navigation}) => ({
   //     title: `${navigation.state.params.title}`,
   //   }),
@@ -52,7 +52,7 @@ const Camera = StackNavigator({
     })
   },
   Recipe: {
-    screen: RecipeScreen,
+    screen: RecipeDetails,
     navigationOptions: ({navigation}) => ({
       title: `${navigation.state.params.title}`,
     })

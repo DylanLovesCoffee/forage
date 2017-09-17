@@ -14,7 +14,7 @@ export default class RecipeList extends Component {
     super();
     this.state = {
       data : [
-        {title: 'Loading... 🍔'},
+        { title: "Loading... " }
       ]
     }
   }
@@ -35,7 +35,7 @@ export default class RecipeList extends Component {
   render() {
     let { navigate } = this.props.navigation
     return (
-      <View style={styles.container}>
+      <View style={styles.background}>
         {this.state.data.map(function(recipe, i) {
           return <RecipeButton
             navigate={navigate}
@@ -47,10 +47,11 @@ export default class RecipeList extends Component {
       </View>
     );
   }
+
 }
 
 const styles = StyleSheet.create({
-  container: {
+  background: {
     flex: 1,
     padding: 10,
     justifyContent: 'center',
