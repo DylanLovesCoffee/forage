@@ -8,7 +8,7 @@ import {
   TabNavigator,
   NavigationActions,
 } from 'react-navigation';
-import Recipe from './components/recipeList/Recipe';
+import RecipeButton from './components/recipeList/RecipeButton';
 import RecipeScreen from './components/recipeList/RecipeScreen';
 import LandingPage from './components/account/LandingPage';
 import Login from './components/account/Login';

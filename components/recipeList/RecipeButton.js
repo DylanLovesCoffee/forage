@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 
-export default class Recipe extends Component {
+export default class RecipeButton extends Component {
   render() {
 
     let { title, navigate, id } = this.props
