@@ -1,6 +1,4 @@
 # Forage
-
-## Introduction
 Forage is a mobile app that helps you decide what to cook. Like most people, towards the end of the week I start to run low on groceries, and with that I run out of ideas on what to cook.
 
 Forage lets you snap a picture of your available groceries, and then determines what recipes you could make out of them.
