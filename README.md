@@ -5,11 +5,11 @@ Forage is a mobile app that helps you decide what to cook. Like most people, tow
 
 Forage lets you snap a picture of your available groceries, and then determine what recipes you could make out of them.
 
-![Forage1](https://github.com/DylanLovesCoffee/forage/blob/master/assets/forage1.PNG)
-![Forage2](https://github.com/DylanLovesCoffee/forage/blob/master/assets/forage2.PNG)
-![Forage3](https://github.com/DylanLovesCoffee/forage/blob/master/assets/forage3.PNG)
-![Forage4](https://github.com/DylanLovesCoffee/forage/blob/master/assets/forage4.PNG)
-![Forage5](https://github.com/DylanLovesCoffee/forage/blob/master/assets/forage5.PNG)
+<img src="https://github.com/DylanLovesCoffee/forage/blob/master/assets/forage1.PNG" width="250">
+<img src="https://github.com/DylanLovesCoffee/forage/blob/master/assets/forage2.PNG" width="250">
+<img src="https://github.com/DylanLovesCoffee/forage/blob/master/assets/forage3.PNG" width="250">
+<img src="https://github.com/DylanLovesCoffee/forage/blob/master/assets/forage4.PNG" width="250">
+<img src="https://github.com/DylanLovesCoffee/forage/blob/master/assets/forage5.PNG" width="250">
 
 ## Before We Dive In
 In building this app, I used two APIs: [Clarifai's Image Recognition](https://clarifai.com/developer/) and [Spoonacular's Recipe, Food and Nutrition](https://market.mashape.com/spoonacular/recipe-food-nutrition) API.
