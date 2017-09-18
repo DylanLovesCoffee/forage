@@ -5,6 +5,12 @@ Forage is a mobile app that helps you decide what to cook. Like most people, tow
 
 Forage lets you snap a picture of your available groceries, and then determine what recipes you could make out of them.
 
+[Forage Splash Screen](./assets/forage1.png)
+[Forage Splash Screen](./assets/forage2.png)
+[Forage Splash Screen](./assets/forage3.png)
+[Forage Splash Screen](./assets/forage4.png)
+[Forage Splash Screen](./assets/forage5.png)
+
 ## Before We Dive In
 In building this app, I used two APIs: [Clarifai's Image Recognition](https://clarifai.com/developer/) and [Spoonacular's Recipe, Food and Nutrition](https://market.mashape.com/spoonacular/recipe-food-nutrition) API.
 
