@@ -5,8 +5,7 @@ Forage is a mobile app that helps you decide what to cook. Like most people, tow
 
 Forage lets you snap a picture of your available groceries, and then determine what recipes you could make out of them.
 
-<img src="https://github.com/DylanLovesCoffee/forage/blob/master/assets/forage1.PNG" width="250">
-<img src="https://github.com/DylanLovesCoffee/forage/blob/master/assets/forage2.PNG" width="250">
+<img src="https://github.com/DylanLovesCoffee/forage/blob/master/assets/forage1.PNG" width="250"> <img src="https://github.com/DylanLovesCoffee/forage/blob/master/assets/forage2.PNG" width="250">
 <img src="https://github.com/DylanLovesCoffee/forage/blob/master/assets/forage3.PNG" width="250">
 <img src="https://github.com/DylanLovesCoffee/forage/blob/master/assets/forage4.PNG" width="250">
 <img src="https://github.com/DylanLovesCoffee/forage/blob/master/assets/forage5.PNG" width="250">
