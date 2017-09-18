@@ -56,7 +56,7 @@ export default class AppCamera extends Component {
       headers: {
         "Authorization": "Key " + API_KEY,
         "Content-Type": "application/json",
-        'Accept': 'application/json'
+        "Accept": "application/json"
       },
       body: JSON.stringify({
         "inputs": [
@@ -77,7 +77,7 @@ export default class AppCamera extends Component {
     let ingredients = await (Array.from(new Set(list))).filter(function(i) {
       return i !== undefined
     })
-    this.setState({ items: ingredients.join(', ') })
+    this.setState({items: ingredients.join(',')})
   }
 
   exitPhoto() {
@@ -86,7 +86,6 @@ export default class AppCamera extends Component {
 
   getRecipes() {
     this.props.navigation.navigate("List", {name: this.state.items})
-    // Should render some sort of loading image on the camera before navigation
   }
 
   renderImage() {

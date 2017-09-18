@@ -10,9 +10,7 @@ import {
   StatusBar,
 } from 'react-native';
 import AppCamera from '../camera/AppCamera';
-import Clarifai from '../utilities/Clarifai'
 import App from '../../App'
-import RecipeList from '../Screens/RecipeList'
 
 export default class Home extends Component {
   constructor(props) {

@@ -8,14 +8,12 @@ import {
   TabNavigator,
   NavigationActions,
 } from 'react-navigation';
-import axios from 'axios';
-import Recipe from './components/recipeList/Recipe';
-import List from './components/recipeList/List';
-import RecipeScreen from './components/recipeList/RecipeScreen';
+import RecipeButton from './components/recipeList/RecipeButton';
+import RecipeDetails from './components/recipeList/RecipeDetails';
 import LandingPage from './components/account/LandingPage';
 import Login from './components/account/Login';
 import Signup from './components/account/Signup';
-import RecipeList from './components/Screens/RecipeList';
+import RecipeList from './components/recipeList/RecipeList';
 import AppCamera from './components/camera/AppCamera';
 import Home from './components/profile/Home';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -29,16 +27,16 @@ const Account = StackNavigator({
       tabBarIcon: <Icon name="favorite" size={25} style={styles.tabIcons}/>
     }),
   },
-  RecipeList: { screen: RecipeList },
-  Recipe: {
-    screen: RecipeScreen,
-    navigationOptions: ({navigation}) => ({
-      title: `${navigation.state.params.title}`,
-    }),
-   }
+  // RecipeList: { screen: RecipeList },
+  // Recipe: {
+  //   screen: RecipeDetails,
+  //   navigationOptions: ({navigation}) => ({
+  //     title: `${navigation.state.params.title}`,
+  //   }),
+  //  }
 })
 
-const Scanner = StackNavigator({
+const Camera = StackNavigator({
   Cam: {
     screen: AppCamera,
     navigationOptions: ({navigation}) => ({
@@ -47,9 +45,14 @@ const Scanner = StackNavigator({
       header: null,
     })
   },
-  List: { screen: RecipeList },
+  List: {
+    screen: RecipeList,
+    navigationOptions: ({navigation}) => ({
+      title: "Recipes",
+    })
+  },
   Recipe: {
-    screen: RecipeScreen,
+    screen: RecipeDetails,
     navigationOptions: ({navigation}) => ({
       title: `${navigation.state.params.title}`,
     })
@@ -79,7 +82,7 @@ const SignInSignUp = StackNavigator({
 
 const App = TabNavigator({
   Profile: { screen: Account },
-  Camera: { screen: Scanner },
+  Camera: { screen: Camera },
 }, {
   animationEnabled: true,
   swipeEnabled: true,
